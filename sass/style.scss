@@ -1,0 +1,994 @@
+/*!
+Theme Name: Cloudsdale_Theme
+Theme URI: https://cloudsdale.co.uk/fullfat
+Author: Sean Cloudsdale
+Author URI: https://cloudsdale.co.uk/
+*/
+
+@import "abstracts/abstracts";
+
+@import "generic/normalize";
+
+@import "generic/box-sizing";
+
+@import "base/base";
+
+@import "components/components";
+
+@import "utilities/accessibility";
+
+@import "utilities/alignments";
+
+// ===========================================================================
+// My Custom Styles
+// ===========================================================================
+//
+// Table of Contents:
+//
+// -1. Colours
+//  1. Header Settings
+//  2. Typography
+//  3. Navigation
+//  4. Footer
+//  5. Containers
+//  6. Buttons
+//  6. Gallery ???
+//  7. Blog
+//  8. Single blog post
+//  9. Default Page
+
+// https://my.corebook.io/OJUcHwxiAK3lzsU5Bc5DvKiXiHVz7xX0/loci-1/introduction
+
+// ===========================================================================
+// -1. Colours
+// ===========================================================================
+
+$blue: #285a5b; //Clifton Blue
+$blue-dark: #193631; // Midnight Blue
+$craft: #dfc797; // Loci Craft
+$pink: #d78267; // Clifton Pink
+$green: #439367; // Duke Green
+$yellow: #d49229; // Alliance Yellow
+
+$primary: $blue;
+$highlight: $pink;
+$white: $craft;
+
+$xs: 575px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+.bg-craft {
+  background: $craft;
+  background-image: url(../Clifton/assets/texture/craft.png);
+  background-repeat: repeat;
+}
+
+.bg-dot {
+  background-image: url(../Clifton/assets/texture/dots.png);
+  background-repeat: repeat;
+}
+
+.pink-overlay,
+.blue-overlay,
+.blue-dark-overlay,
+.green-overlay,
+.yellow-overlay {
+  position: relative;
+  z-index: 1;
+  * {
+    z-index: 100;
+  }
+}
+.pink-overlay::after,
+.blue-overlay::after,
+.blue-dark-overlay::after,
+.green-overlay::after,
+.yellow-overlay::after {
+  content: ""; // ::before and ::after both require content
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #f4abb9;
+  mix-blend-mode: multiply;
+}
+
+.blue-overlay::after {
+  background: #136c91;
+}
+.blue-dark-overlay::after {
+  background: #084351;
+}
+.green-overlay::after {
+  background: #32b3a3;
+}
+.yellow-overlay::after {
+  background: #fab335;
+}
+
+.border {
+  padding: 5px;
+  margin: 0px;
+  border: 0px solid transparent !important;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.inset-shadow {
+  box-shadow: inset 0px 0px 5px #333;
+}
+// ===========================================================================
+// 1. Header Settings
+// ===========================================================================
+body,
+#page,
+.view,
+html {
+  width: 100%;
+  height: 100%;
+}
+// Settings for navbar in edit mode
+
+body.logged-in {
+  nav,
+  #offcanvasNav {
+    margin-top: 32px;
+  }
+}
+body {
+  background-color: $primary;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-end {
+  align-self: flex-end;
+}
+
+// loading
+#loading {
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  transition:
+    opacity 200ms,
+    display 200ms;
+}
+@keyframes slideaway {
+  from {
+    display: block;
+  }
+  to {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+.hide {
+  animation: slideaway 200ms;
+  display: none;
+}
+// ===========================================================================
+//  2. Typography
+// ===========================================================================
+@font-face {
+  font-family: "VCHenrietta-Regular";
+  src:
+    url(../Clifton/assets/fonts/VCHenrietta-Regular.woff2) format("woff2"),
+    url(../Clifton/assets/fonts/VCHenrietta-Regular.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "VCHenrietta-SemiBold";
+  src:
+    url(../Clifton/assets/fonts/VCHenrietta-SemiBold.woff2) format("woff2"),
+    url(../Clifton/assets/fonts/VCHenrietta-SemiBold.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "VCHenrietta-SemiBold", sans-serif;
+  font-style: normal;
+}
+
+h2 {
+  font-family: "VCHenrietta-Regular", sans-serif;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+@media (min-width: $sm) {
+  h2 {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: $xl) {
+  h2 {
+    font-size: 45px;
+  }
+}
+
+body,
+p {
+  font-family: "VCHenrietta-Regular", sans-serif;
+  font-style: normal;
+}
+.menu-item a,
+.btn,
+button {
+  font-family: "VCHenrietta-Regular", sans-serif;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+
+a {
+  color: $blue;
+  transition-duration: 0.2s;
+}
+a:visited {
+  color: $blue;
+}
+a:hover {
+  color: $blue-dark;
+}
+
+li {
+  font-family: "VCHenrietta-Regular", sans-serif;
+  font-style: normal;
+  letter-spacing: 1px;
+}
+
+// ===========================================================================
+//  3. Navigation
+// ===========================================================================
+
+.menu-toggle {
+  display: block;
+  background-color: transparent;
+  border: none;
+}
+
+.navbar-toggler-icon {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='https://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+#navbar {
+  transition: height 0.6s ease-in-out;
+  background-repeat: repeat;
+}
+#navbrand {
+  transition: height 0.6s ease-in-out;
+  transition: width 0.6s ease-in-out;
+  -webkit-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+.cm-nav {
+  z-index: 101;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+.cm-nav-inner {
+  position: relative;
+}
+
+.navbar-brand {
+  width: 160px;
+  height: 56px;
+  margin-top: 8px;
+  img {
+    transition: 0.5s ease-in-out;
+  }
+}
+
+.menu-toggle {
+  #menuIcon {
+    background-image: url(../Clifton/assets/icons/menu.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 36.67px;
+    height: 20px;
+    margin-top: 27px;
+    display: inline-block;
+    transition-duration: 0.6s;
+  }
+}
+@media (min-width: $xl) {
+  .menu-toggle {
+    width: 110px;
+  }
+}
+#menuIconClose {
+  background-image: url(../Clifton/assets/icons/menu-close.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  transition-duration: 0.6s;
+}
+
+#bookBtn {
+  transition-duration: 0.6s;
+  margin-top: 18px;
+  a {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+@media (min-width: 992px) {
+  .menu-toggle {
+    width: 110px;
+    width: 171.3px;
+  }
+  #bookBtn {
+    a {
+      font-size: 12px;
+    }
+  }
+}
+// offcanvas start
+#loci-logo {
+  width: 100px;
+  padding: 5px 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#clifton-logo {
+  width: 160px;
+  padding: 5px 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.page-item {
+  color: $craft;
+  width: 100%;
+}
+.menu-menu-1-container {
+  position: relative;
+
+  display: flex;
+  justify-content: space-around;
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    li {
+      padding: 10px;
+      text-transform: uppercase;
+      font-size: 20px;
+    }
+  }
+  a,
+  a:visited {
+    color: $craft;
+  }
+  a:hover {
+    color: $pink;
+  }
+}
+
+.offcanvas-body::before {
+  position: fixed;
+  content: "";
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  border: none;
+  background: #136c91;
+  mix-blend-mode: multiply;
+  width: 400px;
+}
+
+@media (min-width: $xl) {
+  .menu-menu-1-container {
+    ul {
+      display: flex;
+      li {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+.main-navigation ul {
+  display: flex;
+}
+#offcanvasNav {
+  .modal-footer-logo,
+  .offcanvas-header {
+    height: 100px;
+  }
+  .modal-footer-logo {
+    width: 100%;
+    bottom: 0;
+    z-index: 100;
+  }
+}
+// ===========================================================================
+//  4. Footer
+// ===========================================================================
+
+.footer {
+  color: $craft;
+  padding-top: 4em;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    li {
+      font-size: 13px;
+      padding-bottom: 3px;
+      h5 {
+        font-size: 18px;
+      }
+    }
+  }
+}
+.footer-logo {
+  img {
+    height: auto;
+    width: 200px;
+    padding-bottom: 4em;
+  }
+}
+
+// form
+.form-floating {
+  input {
+    border: none;
+  }
+  .floating-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid $craft;
+    border-radius: 0;
+    width: 100%;
+  }
+}
+.form {
+  padding-bottom: 2em;
+}
+.form-select,
+.form-control {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid $craft;
+  border-radius: 0;
+}
+
+.form-select:focus + label,
+.form-control:focus + label {
+  color: $craft;
+}
+.floating-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid $craft;
+  border-radius: 0;
+}
+.floating-input:focus {
+  outline: none !important;
+}
+
+.craft-text {
+  color: $craft;
+  padding: 1rem 0rem;
+}
+// form end
+// ===========================================================================
+//  5. Containers
+// ===========================================================================
+
+.clifton-crest {
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    max-width: 300px;
+  }
+}
+.square-box {
+  position: relative;
+  overflow: hidden;
+}
+.square-box:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+@media (max-width: 991.98px) {
+  .square-box-small {
+    position: relative;
+    overflow: hidden;
+  }
+  .square-box-small:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+}
+
+.big-news {
+  padding: 5px;
+}
+
+.text-middle-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .inner-middle-box {
+    width: 100%;
+    padding: 0% 10%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: $md) {
+  .text-middle-box {
+    .inner-middle-box {
+      padding: 0% 20%;
+    }
+  }
+}
+
+@media (min-width: $xxl) {
+  .text-middle-box {
+    .inner-middle-box {
+      padding: 0% 25%;
+    }
+  }
+}
+
+.light-header {
+  color: $craft;
+  padding: 2em 0em;
+  a {
+    text-decoration: none;
+    color: $craft;
+  }
+}
+.dark-header {
+  color: $blue-dark;
+  padding: 2em 0em;
+  a {
+    text-decoration: none;
+    color: $blue-dark;
+  }
+}
+
+// ===========================================================================
+//  6. Buttons
+// ===========================================================================
+
+.btn {
+  transition: box-shadow 0.3s ease-in-out;
+}
+.btn:hover {
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow:
+    0 6px 8px 0 rgba(0, 0, 0, 0.24),
+    0 10px 25px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn {
+}
+
+.btn-primary {
+  border: 5px solid;
+  border-image-outset: 0;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 100px;
+  border-image-repeat: repeat;
+  border-radius: 0px;
+  transition: color 0.4s;
+  background-repeat: repeat;
+  width: 100%;
+  border-image-outset: 3px;
+  border: 5px solid $blue;
+  background-color: $blue;
+  border-color: $pink;
+  border-image: url(../Clifton/assets/texture/pink-xs.png) 5;
+  background-image: url(../Clifton/assets/texture/blue-xs.png);
+  border-color: $pink;
+  background-color: $blue;
+  color: $craft;
+  &:visited,
+  &:hover {
+    color: $craft;
+  }
+}
+.btn-secondary {
+  border: 5px solid;
+  border-image-outset: 0;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 100px;
+  border-image-repeat: repeat;
+  border-radius: 0px;
+  transition: color 0.4s;
+  background-repeat: repeat;
+  width: 100%;
+  border-image-outset: 3px;
+  border-image: url(../Clifton/assets/texture/craft-xs.png) 5;
+  background-image: url(../Clifton/assets/texture/blue-xs.png);
+  color: $craft;
+  &:visited,
+  &:hover {
+    color: $craft;
+  }
+}
+.btn-light {
+  border: 5px solid;
+  border-image-outset: 0;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 100px;
+  border-image-repeat: repeat;
+  border-radius: 0px;
+  transition: color 0.4s;
+  background-repeat: repeat;
+  width: 100%;
+  border-image-outset: 3px;
+  border-image: url(../Clifton/assets/texture/pink-xs.png) 5;
+  background-image: url(../Clifton/assets/texture/craft-xs.png);
+  color: $blue;
+  &:visited,
+  &:hover {
+    color: $blue;
+  }
+}
+
+.btn-50 {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// ===========================================================================
+//  6. Gallery
+// ===========================================================================
+
+.gallery-parent {
+  display: flex;
+  flex-direction: row;
+}
+.gallery-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0.5em;
+}
+
+.gallery-img {
+  margin: 0.5em;
+  padding: 5px;
+  align-self: center;
+  img {
+    position: relative;
+    z-index: 101;
+  }
+}
+
+.gallery-container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: $md) {
+  .gallery-container {
+    max-width: 960px;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+  }
+}
+@media (min-width: $lg) {
+  .gallery-container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: $xl) {
+  .gallery-container {
+    max-width: 1320px;
+  }
+}
+
+.gallery-portrait-left {
+  margin-left: 38%;
+  width: 62%;
+}
+.gallery-portrait-right {
+  margin-right: 38%;
+  width: 62%;
+}
+.gallery-button {
+  padding: 2em 0em;
+}
+
+@media (max-width: $lg) {
+  .hide-lg {
+    display: none;
+  }
+}
+// ===========================================================================
+//  7. Blog
+// ===========================================================================
+.whats-on {
+  padding-bottom: 2em;
+}
+.the-blogs {
+}
+
+.blog-post {
+}
+.blog-2-3 {
+  margin-bottom: 1em;
+}
+@media (min-width: $xl) {
+  .blog-2-3:nth-child(2) {
+    .border {
+      order: 2;
+    }
+  }
+}
+/// Pagination
+
+#pagination-main {
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+
+.pagenav {
+  padding-top: 30px;
+}
+
+@media (min-width: $md) {
+  .blog-post-container {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .blog-post-list {
+    width: 45%;
+  }
+
+  .blog-post-list:nth-child(odd) {
+    margin-top: 6em;
+  }
+  .blog-post-list:nth-child(1) {
+    width: 100%;
+    margin-top: 0em;
+    .square-box::before {
+      padding-top: 50%;
+    }
+  }
+}
+// ===========================================================================
+//  8. Single Blog Post
+// ===========================================================================
+#blog-main {
+  padding-top: 300px;
+  padding-bottom: 200px;
+}
+.blog-container {
+  position: relative;
+  padding: 0px 10px;
+}
+.blog-content {
+  top: -100px;
+  position: relative;
+}
+.post-thumb {
+  height: 300px;
+  width: 300px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  z-index: 3;
+  top: -150px;
+}
+@media (min-width: $md) {
+  .blog-container {
+    padding: 0px 20px;
+  }
+}
+@media (min-width: $lg) {
+  .blog-container {
+    padding: 0px 50px;
+  }
+  #blog-main {
+    padding-top: 400px;
+    padding-bottom: 200px;
+  }
+  .post-thumb {
+    height: 400px;
+    width: 400px;
+    top: -200px;
+  }
+}
+@media (min-width: $xl) {
+  .post-thumb {
+    margin-right: 0px;
+  }
+  .blog-container {
+    padding: 0px 100px;
+  }
+}
+@media (min-width: $xxl) {
+  .blog-container {
+    padding: 0px 200px;
+  }
+}
+
+// ===========================================================================
+//  9. Default Page
+// ===========================================================================
+
+#page-main {
+  margin-top: -200px;
+  padding-bottom: 200px;
+}
+.page-img-header {
+  height: 600px;
+  position: relative;
+  z-index: 1;
+}
+.page-container {
+  position: relative;
+  padding: 10px 10px;
+  z-index: 2;
+}
+.page-content {
+  position: relative;
+}
+@media (min-width: $md) {
+  .page-container {
+    padding: 20px 20px;
+  }
+}
+@media (min-width: $lg) {
+  .page-container {
+    padding: 50px 50px;
+  }
+}
+@media (min-width: $xl) {
+  .page-container {
+    padding: 100px 100px;
+  }
+}
+@media (min-width: $xxl) {
+  .page-container {
+    padding: 200px 200px;
+  }
+  .page-img-header {
+    height: 800px;
+  }
+  #page-main {
+    margin-top: -300px;
+  }
+}
+
+// ===========================================================================
+//  9. Wordpress Styles
+// ===========================================================================
+.wp-block-gallery {
+  .wp-block-image:after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #f4abb9;
+    mix-blend-mode: multiply;
+  }
+  .wp-block-image {
+    background: #dfc797;
+    background-repeat: repeat;
+    background-image: none;
+    background-image: url(../Clifton/assets/texture/craft.png);
+    background-repeat: repeat;
+    padding: 5px;
+    img {
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
+.wp-block-button {
+  padding-bottom: 10px;
+  width: 100%;
+}
+.wp-block-button__link {
+  border: 5px solid;
+  line-height: 10px;
+  border-image-outset: 0;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 100px;
+  border-image-repeat: repeat;
+  border-radius: 0px;
+  transition: color 0.4s;
+  background-repeat: repeat;
+  width: 100%;
+  border-image-outset: 3px;
+  border: 5px solid $blue;
+  background-color: $blue;
+  border-color: $pink;
+  border-image: url(../Clifton/assets/texture/pink-xs.png) 5;
+  background-image: url(../Clifton/assets/texture/blue-xs.png);
+  border-color: $pink;
+  background-color: $blue;
+  color: $craft;
+  &:visited,
+  &:hover {
+    color: $craft;
+  }
+}
+@media (min-width: $lg) {
+  .wp-block-button {
+    padding-bottom: 10px;
+    width: 50%;
+  }
+}
+
+//menu
+
+#menu-main {
+  padding-top: 400px;
+  padding-bottom: 200px;
+}
+.menu-container {
+  position: relative;
+  padding: 0px 10px;
+}
+.menu-content {
+  top: -100px;
+  position: relative;
+}
