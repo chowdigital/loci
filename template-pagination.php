@@ -42,7 +42,7 @@ if ( $query->have_posts() ) :
   ?>
       <div class="blog-post-list pb-5">
         <div class="row">
-          <a href="<?php echo get_permalink() ?>" class="border bg-craft pink-overlay" >
+          <a href="<?php echo get_permalink() ?>" class="border bg-craft highlight-overlay" >
             <div  class="square-box" style="background-image: url(<?php the_post_thumbnail_url(); ?>); background-repeat: no-repeat; background-position: center; background-size: cover;">
             </div>
 

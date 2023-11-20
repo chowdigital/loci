@@ -20,26 +20,79 @@ window.onscroll = function () {
 };
 
 function scrollFunction() {
-  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    document.getElementById("navbar").style.height = "40px";
-    document.getElementById("navbrand").style.width = "80px";
-    document.getElementById("navbrand").style.height = "28px";
-    document.getElementById("navbrand").style.marginTop = "0px";
-    document.getElementById("bookBtn").style.marginTop = "0px";
-    document.getElementById("bookBtn").style.transitionDelay = "0s";
-    document.getElementById("menuIcon").style.marginTop = "8px";
-    document.getElementById("menuIcon").style.transitionDelay = "0s";
+  if (window.innerWidth <= 576) {
+    setStyles("50px", "230px", "4px", "10px", "0s", "8px", "0s");
+  } else if (
+    window.innerWidth > 576 &&
+    (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80)
+  ) {
+    setStyles(
+      "50px",
+      "250px",
+      "2px",
+      "calc(50% - 125px)",
+      "5px",
+      "0s",
+      "8px",
+      "0s"
+    );
   } else {
-    document.getElementById("navbar").style.height = "80px";
-    document.getElementById("navbrand").style.width = "160px";
-    document.getElementById("navbrand").style.height = "23px";
-    document.getElementById("navbrand").style.marginTop = "8px";
-    document.getElementById("bookBtn").style.marginTop = "18px";
-    document.getElementById("menuIcon").style.marginTop = "27px";
-    document.getElementById("bookBtn").style.transitionDelay = "0.1s";
-    document.getElementById("menuIcon").style.transitionDelay = "0.1s";
+    setStyles(
+      "100px",
+      "400px",
+      "17px",
+      "calc(50% - 200px)",
+      "30px",
+      "0.1s",
+      "27px",
+      "0.1s"
+    );
+  }
+
+  function setStyles(
+    navbarHeight,
+    navbrandWidth,
+    navbrandMarginTop,
+    navbrandLeft,
+    bookBtnMarginTop,
+    bookBtnTransitionDelay,
+    menuIconMarginTop,
+    menuIconTransitionDelay
+  ) {
+    document.getElementById("navbar").style.height = navbarHeight;
+    document.getElementById("navbrand").style.width = navbrandWidth;
+    document.getElementById("navbrand").style.marginTop = navbrandMarginTop;
+    document.getElementById("navbrand").style.left = navbrandLeft;
+
+    document.getElementById("bookBtn").style.marginTop = bookBtnMarginTop;
+    document.getElementById("bookBtn").style.transitionDelay =
+      bookBtnTransitionDelay;
+    document.getElementById("bookBtn2").style.marginTop = bookBtnMarginTop;
+    document.getElementById("bookBtn2").style.transitionDelay =
+      bookBtnTransitionDelay;
+    document.getElementById("menuIcon").style.marginTop = menuIconMarginTop;
+    document.getElementById("menuIcon").style.transitionDelay =
+      menuIconTransitionDelay;
   }
 }
+
+// force refresh when website crosses 576px
+// Set the initial window size
+let isBelow576 = window.innerWidth <= 576;
+
+// Add an event listener for the resize event
+window.onresize = function () {
+  // Check if the window size goes above or below 576px
+  const currentIsBelow576 = window.innerWidth <= 576;
+
+  if (currentIsBelow576 !== isBelow576) {
+    // Update the flag
+    isBelow576 = currentIsBelow576;
+
+    // Force a page refresh
+    location.reload();
+  }
+};
 
 // page loader
 

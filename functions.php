@@ -123,12 +123,12 @@ function cloudsdale_master_scripts() {
 	wp_enqueue_style( 'Bootstrap','https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css', array() );
 
 	//wp_enqueue_style( 'cloudsdale-master-style', get_stylesheet_uri(), array(), $ver = 1.3 );
-	wp_enqueue_style('clousedale-minified-style', get_theme_file_uri('style.min.css') , array(), $ver = 1.1 );
+	wp_enqueue_style('clousedale-minified-style', get_theme_file_uri('style.min.css') , array(), $ver = 1.5 );
 	wp_style_add_data( 'cloudsdale-master-style', 'rtl', 'replace' );
     wp_enqueue_script( 'Bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', array(), '1.0.0', true );
 
 	wp_enqueue_script( 'cloudsdale-master-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.1', true );
-	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array(),'1.2', true );
+	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array(),'1.3', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -219,7 +219,7 @@ if ( class_exists( 'WooCommerce' ) ) {
         ));
     }
 // Add a control for contact information 
-$contact_info_fields = array('address', 'phone', 'email', 'facebook', 'instagram');
+$contact_info_fields = array('address', 'map', 'phone', 'email', 'instagram');
 foreach ($contact_info_fields as $info_field) {
     $default_value = '';
 
@@ -228,16 +228,19 @@ foreach ($contact_info_fields as $info_field) {
     } elseif ($info_field === 'phone') {
         $default_value = '+1234567890'; // Default phone number
     }
+	$label = ($info_field === 'map') ? 'Enter Google Maps URL' : ucfirst($info_field) . ' Contact Info';
+	$label = ($info_field === 'instagram') ? 'Enter Instagram URL' : ucfirst($info_field) . ' Contact Info';
 
-    $wp_customize->add_setting('contact_info_' . $info_field, array(
-        'default' => $default_value,
-    ));
+	$wp_customize->add_setting('contact_info_' . $info_field, array(
+		'default' => $default_value,
+	));
 
-    $wp_customize->add_control('contact_info_' . $info_field, array( 
-        'label' => ucfirst($info_field) . ' Contact Info',
-        'section' => 'contact_info',
-        'type' => 'text',
-    ));
+	$wp_customize->add_control('contact_info_' . $info_field, array(
+		'label' => $label,
+		'section' => 'contact_info',
+		'type' => 'text',
+	));
+
 }
 
 }

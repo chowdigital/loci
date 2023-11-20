@@ -2,82 +2,125 @@
 
 <!-- Full Page Intro -->
 
-  <div class="comtaner-fluid" style="height: 100vh; background-image:  url(<?php the_post_thumbnail_url(); ?>); background-repeat: no-repeat; background-position: center; background-size: cover;">
-  <div class="col-12 text-center clifton-crest">
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/logos/Clifton_Crest.png" alt="Cifton Logo" style>
-  </div>
+<div class="container-fluid"
+    style="height: 100vh; background-image:  url(<?php the_post_thumbnail_url(); ?>); background-repeat: no-repeat; background-position: center; background-size: cover;">
+    <div class="col-12 text-center clifton-crest row">
+
+        <div class="col-12 col-md-10 col-lg-6 bg-craft p-3 border-primary">
+            <h2>Full website coming soon</h2>
+        </div>
+
+    </div>
+
+
 </div>
 
 
 
-<main class="container-fluid">
-<section> <!-- Big News -->
-<div class="row big-news bg-craft">
-            <div class="col-md-6 col-xl-8 order-md-2 square-box-small inset-shadow" style="background-image:  url('<?php the_field('hero_1_image'); ?>'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+<main class="bg-craft highlight-overlay">
+
+    <section class="image-content-blocks">
+        <div class="image-content-block">
+            <div class="image-block"
+                style="background-image:  url('<?php the_field('hero_1_image'); ?>'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+
+
             </div>
-            <div class="col-md-6 col-xl-4 order-md-1 square-box text-middle-box">
-              <div class="inner-middle-box">
-                <h2><?php the_field('hero_1_title'); ?></h2>
-                  <a class="a-hover" href="<?php the_field('hero_1_button_link'); ?>">
-                    <button type="button" class="btn-primary"><?php the_field('hero_1_btn_text'); ?></button>                  
-                  </a>
-              </div> 
-            </div>
-        </div>
-        <div class="row big-news bg-craft pink-overlay">
-            <div class="col-md-6 col-xl-8 square-box-small inset-shadow" style="background-image:  url('<?php the_field('hero_2_image'); ?>'); background-repeat: no-repeat; background-position: center; background-size: cover;">
-            </div>
-            <div class="col-md-6 col-xl-4 square-box text-middle-box">
-              <div class="inner-middle-box">
-              <h2><?php the_field('hero_2_title'); ?></h2>
-                <a class="a-hover" href="<?php the_field('hero_2_button_link'); ?>">
-                    <button type="button" class="btn-secondary"><?php the_field('hero_2_btn_text'); ?></button>                  
-                  </a>
-              </div> 
+            <div class="content-block bg-craft navy-overlay">
+                <div class="inner-content-block">
+                    <h2><?php the_field('hero_1_title'); ?></h2>
+                    <p><?php the_field('hero_1_body'); ?></p>
+
+                    <div class="text-center">
+                        <a class="text-link" href="<?php the_field('hero_1_button_link'); ?>">
+                            <?php the_field('hero_1_btn_text'); ?></a>
+                    </div>
+
+                </div>
             </div>
         </div>
- 
+        <div class="image-content-block switch-block">
+            <div class="image-block"
+                style="background-image:  url('<?php the_field('hero_2_image'); ?>'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+
+
+            </div>
+            <div class="content-block bg-craft navy-overlay">
+                <div class="inner-content-block">
+                    <h2><?php the_field('hero_2_title'); ?></h2>
+                    <p><?php the_field('hero_2_body'); ?></p>
+                    <div class="text-center">
+                        <a class="text-link" href="<?php the_field('hero_2_button_link'); ?>">
+                            <?php the_field('hero_2_btn_text'); ?></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="image-content-block">
+            <div class="image-block"
+                style="background-image:  url('<?php the_field('hero_3_image'); ?>'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+
+
+            </div>
+            <div class="content-block bg-craft navy-overlay">
+                <div class="inner-content-block">
+                    <h2><?php the_field('hero_3_title'); ?></h2>
+                    <p><?php the_field('hero_3_body'); ?></p>
+
+                    <div class="text-center">
+                        <a class="text-link" href="<?php the_field('hero_3_button_link'); ?>">
+                            <?php the_field('hero_3_btn_text'); ?></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </section>
-  <section class="row bg-craft blue-overlay">
-    <div class="bg-dot">
-    <div class="gallery-container">
-      <div class="light-header text-center">
-        <a href="<?php echo get_home_url(); ?>/gallery/"><h2>Gallery</h2></a>
-        
-      </div>
-        <div class="col-12 gallery-parent">
-          <div class="gallery-col">
-            <div class="gallery-img pink-border bg-craft pink-overlay">
-             <img  src="<?php the_field('photo_1'); ?>" />
+
+    <!--
+    <section class="row bg-craft blue-overlay">
+        <div class="bg-dot">
+            <div class="gallery-container">
+                <div class="light-header text-center">
+                    <a href="<?php echo get_home_url(); ?>/gallery/">
+                        <h2>Gallery</h2>
+                    </a>
+
+                </div>
+                <div class="col-12 gallery-parent">
+                    <div class="gallery-col">
+                        <div class="gallery-img pink-border bg-craft highlight-overlay">
+                            <img src="<?php the_field('photo_1'); ?>" />
+                        </div>
+                        <div class="gallery-img bg-craft highlight-overlay gallery-portrait-left">
+                            <img src="<?php the_field('photo_2'); ?>" />
+                        </div>
+                    </div>
+                    <div class="gallery-col gallery-col-middle">
+                        <div class="gallery-img bg-craft highlight-overlay">
+                            <img src="<?php the_field('photo_3'); ?>" />
+                        </div>
+                    </div>
+                    <div class="gallery-col hide-lg">
+                        <div class="gallery-img bg-craft highlight-overlay gallery-portrait-right">
+                            <img class="" src="<?php the_field('photo_4'); ?>" />
+                        </div>
+                        <div class="gallery-img bg-craft highlight-overlay">
+                            <img src="<?php the_field('photo_5'); ?>" />
+                        </div>
+
+                    </div>
+                </div>
+                <!--    <div class="btn-50 pt-5 pb-5">
+                    <a class="a-hover" href="<?php echo get_home_url(); ?>/gallery/">
+                        <button type="button" class="btn btn-light">See more pictures</button>
+                    </a>
+
+                </div>
             </div>
-            <div class="gallery-img bg-craft pink-overlay gallery-portrait-left">
-              <img src="<?php the_field('photo_2'); ?>" />
-            </div>
-          </div>
-          <div class="gallery-col gallery-col-middle">
-           <div class="gallery-img bg-craft pink-overlay">
-              <img src="<?php the_field('photo_3'); ?>" />
-            </div>
-            </div>
-          <div class="gallery-col hide-lg">
-            <div class="gallery-img bg-craft pink-overlay gallery-portrait-right">
-            <img class="" src="<?php the_field('photo_4'); ?>" />
-            </div>
-            <div class="gallery-img bg-craft pink-overlay">
-              <img  src="<?php the_field('photo_5'); ?>" />
-            </div>
- 
-          </div>
-        </div>
-        <div class="btn-50 pt-5 pb-5">
-            <a class="a-hover" href="<?php echo get_home_url(); ?>/gallery/">
-                <button type="button" class="btn btn-light">See more pictures</button>
-              </a>  
-         
-      </div>  
-      </div>
-  </section>
-  <section class="whats-on row bg-craft">
+    </section> -->
+    <!-- <section class="whats-on row bg-craft">
       <div class="col-12">
       <div class="dark-header text-center">
       <a href="<?php echo get_home_url(); ?>/whats-on/"><h2>What's On</h2></a>
@@ -92,7 +135,7 @@
                       if ( $the_query->have_posts() ) {
                       while ( $the_query->have_posts() ) { $the_query->the_post();  $category = get_the_category();  ?>		
                     <div class="row">
-                    <a href="<?php echo get_permalink() ?>" class="border bg-craft pink-overlay" >
+                    <a href="<?php echo get_permalink() ?>" class="border bg-craft highlight-overlay" >
                       <div  class="square-box" style="background-image: url(<?php the_post_thumbnail_url(); ?>); background-repeat: no-repeat; background-position: center; background-size: cover;">
                       </div>
 
@@ -116,7 +159,7 @@
                       while ( $the_query->have_posts() ) { $the_query->the_post();  $category = get_the_category();  ?>		
                     <div class="row blog-2-3">
                    
-                    <a href="<?php echo get_permalink() ?>" class="col-12 col-xl-8 border bg-craft pink-overlay" >
+                    <a href="<?php echo get_permalink() ?>" class="col-12 col-xl-8 border bg-craft highlight-overlay" >
                         <div class="square-box" style="background-image: url(<?php the_post_thumbnail_url(); ?>); background-repeat: no-repeat; background-position: center; background-size: cover;">
                         </div>
                   
@@ -141,6 +184,6 @@
          
       </div>  
     </div>
-  </section>
-        </main>
+  </section> -->
+</main>
 <?php get_footer(); ?>
