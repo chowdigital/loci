@@ -234,12 +234,19 @@ nav {
     color: $craft;
   }
 }
-.nav-link:focus,
+.nav-link:focus {
+  color: $craft;
+}
 .nav-link:hover {
   color: $navy-blue;
   transition-duration: 0s;
 }
 
+.v-center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 // ===========================================================================
 //  2. Typography
 // ===========================================================================
@@ -281,17 +288,26 @@ h5 {
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 18px;
+}
+p {
+  font-size: 12px;
 }
 @media (min-width: $sm) {
   h2 {
-    font-size: 40px;
+    font-size: 20px;
+  }
+  p {
+    font-size: 14px;
   }
 }
 
 @media (min-width: $xl) {
   h2 {
-    font-size: 45px;
+    font-size: 24px;
+  }
+  p {
+    font-size: 16px;
   }
 }
 
@@ -364,11 +380,16 @@ li {
 .navbar-brand {
   height: auto;
   position: absolute;
-  width: 230px;
+  width: 150px;
   margin-top: 4px;
   left: 10px;
   img {
     transition: 0.5s ease-in-out;
+  }
+}
+@media (min-width: 400px) {
+  .navbar-brand {
+    width: 230px;
   }
 }
 @media (min-width: $md) {
@@ -448,7 +469,8 @@ li {
 
 // offcanvas start
 #loci-logo {
-  width: 100px;
+  width: 100%;
+  max-width: 200px;
   padding: 5px 5px;
   margin-left: auto;
   margin-right: auto;
@@ -531,10 +553,12 @@ li {
   border-bottom: 2px solid $craft;
   height: 35px;
   font-size: 25px;
+  margin-left: 10px;
 }
 .nav-btn {
   height: 40px;
   margin-top: 2px;
+  display: flex;
 }
 @media (min-width: $md) {
   .nav-link {
@@ -553,10 +577,10 @@ li {
 
 .footer {
   color: $blue-dark;
-  padding-top: 4em;
   ul {
     list-style-type: none;
     margin: 0;
+    padding-left: 0;
     li {
       font-size: 13px;
       padding-bottom: 3px;
@@ -617,6 +641,21 @@ li {
   padding: 1rem 0rem;
 }
 // form end
+
+.form-box {
+  display: flex;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: $lg) {
+  .form-box {
+    display: flex;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
 // ===========================================================================
 //  5. Containers
 // ===========================================================================
@@ -927,6 +966,9 @@ li {
     display: none;
   }
 }
+
+//Phse 3 button
+
 // ===========================================================================
 //  7. Blog
 // ===========================================================================

@@ -67,15 +67,19 @@
                                     alt="Cifton Logo" style>
                             </a>
                             <div id="bookBtn" class="nav-btn">
-                                <a href="https://resy.com/cities/ldn/the-william" class="nav-link" role=" button"><span
-                                        class="d-none d-lg-inline">
+                                <a target="blank" href="https://beds24.com/booking2.php?propid=54979" class="nav-link"
+                                    role=" button"><span class="d-none d-lg-inline">
                                         Book </span>Rooms</a>
+
+                                <a target="blank"
+                                    href="https://widgets.resy.com/?ref=https%3A%2F%2Fos.resy.com%2Fportal%2Fldn%2Fthe-william%2Fvenue%2Fwidget&src=os.resy.com-widget&innerHeight=1355&innerWidth=1383&apiKey=f4HOEPaKd73NglfQ0ZuYgJbwZLA3XmwW&venueId=74840#/venues/74840?date=2023-11-28&seats=2"
+                                    class="nav-link" role=" button"><span class="d-none d-lg-inline">
+                                        Book </span>Food</a>
+
+
                             </div>
-                            <!--   <div id="bookBtn2" style="top: 20px; transition-delay: 0.1s;">
-                                    <a href="https://beds24.com/booking2.php?propid=54979"
-                                        class="btn btn-primary a-hover" role="button"><span class="d-none d-lg-inline">
-                                            Book a </span>Room</a>
-                                </div> -->
+
+
                         </div>
                         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav"
                             aria-labelledby="offcanvasNavLabel">

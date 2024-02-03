@@ -71,12 +71,11 @@
     /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
      We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
     </style>
-    <div id="mc_embed_signup" class="testclass2" style="position: relative;">
+    <div id="mc_embed_signup" class="testclass" style="position: relative;">
         <form
             action="https://thecliftonnw8.us20.list-manage.com/subscribe/post?u=84bc3b8cc1e507571a0ac94fa&amp;id=437b50ead5&amp;f_id=001e14eaf0"
             method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
             target="_blank">
-
             <div class="form-box">
                 <div id="mc_embed_signup_scroll">
                     <div class="mc-field-group v-center">
@@ -114,6 +113,8 @@
         ftypes[0] = 'email';
         fnames[1] = 'FNAME';
         ftypes[1] = 'text';
+        fnames[5] = 'BIRTHDAY';
+        ftypes[5] = 'birthday';
         fnames[2] = 'LNAME';
         ftypes[2] = 'text';
         fnames[3] = 'ADDRESS';

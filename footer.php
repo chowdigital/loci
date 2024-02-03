@@ -10,23 +10,26 @@
  */
 
 ?>
+
+<section class="bg-craft highlight-overlay">
+
+    <div class="text-center p-2 pt-5 pb-5">
+        <h2>NEWSLETTER SIGN UP</h2>
+        <p>Be the first to hear about upcoming news, events and offers.</p>
+        <?php get_template_part( 'template-parts/mail-chimp', get_post_type() ); ?>
+
+    </div>
+
+</section>
 <?php if ( is_page_template( 'template-loci.php' ) ) : ?>
 <footer class="d-none">
     <?php else : ?>
-    <footer class=""> <?php endif;  ?>
+    <footer class="bg-craft"> <?php endif;  ?>
 
 
-        <section>
-            <!--  <div class="col-12 col-xl-3 mb-5">
-                    <h3>Join the Club</h3>
-                    <?php get_template_part( 'template-parts/mail-chimp', get_post_type() ); ?>
+        <section class="footer container-fluid">
 
-
-                </div> --->
-        </section>
-        <section class="footer bg-craft container-fluid">
-
-            <div class="row">
+            <div class="row p-3 p-md-5 pb-0">
                 <div class="col-12 col-sm-6 col-lg-3 mb-5">
                     <?php
 							$days_of_week = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday');
@@ -37,8 +40,7 @@
                     <ul class="opening-times-list">
                         <li>
                             <h3>Opening Times</h3>
-                            <p>We are currently closed for refurbishment and will reopen soon at the
-                                following times. </p>
+
                         </li>
 
                         <?php foreach ($days_of_week as $day) : ?>
@@ -52,8 +54,7 @@
                     <ul class="opening-times-list">
                         <li>
                             <h3>Kitchen Times</h3>
-                            <p>We are currently closed for refurbishment and will reopen soon at the
-                                following times. </p>
+
 
                         </li>
 
@@ -109,15 +110,27 @@
                     </ul>
                 </div>
 
-            </div>
 
+
+
+
+
+
+                <div class="col-12 col-xs-3 col-md-2 v-center pb-2">
+                    <a id="loci-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img
+                            src="<?php echo get_template_directory_uri(); ?>/assets/logos/loci.png" alt=""></a>
+                </div>
+                <div class="col-12 col-xs-6 col-md-8 ">
+                    <div class="row" style="height: 100%;">
+                        <div class="col-12 col-lg-4 text-center v-center pb-2"><a href="">Privacy Policy</a></div>
+                        <div class="col-12 col-lg-4 text-center v-center pb-2"><a href="">Cookie Policy</a></div>
+                        <div class="col-12 col-lg-4 text-center v-center pb-2"><a href="">Work with us</a></div>
+                    </div>
+                </div>
+                <div class="col-12 col-xs-3 col-md-2 text-center v-center pb-2">
+                    <h4>loci pubs 2023</h4>
+                </div>
         </section>
-
-
-        <div class="text-center bg-craft p-3">
-            <a id="loci-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img
-                    src="<?php echo get_template_directory_uri(); ?>/assets/logos/loci.png" alt=""></a>
-        </div>
         <!-- Cloudsdale -->
         <div class="text-center" style="background: #000;">
             <a href="https://cloudsdale.co.uk/"> <img class="m-2"

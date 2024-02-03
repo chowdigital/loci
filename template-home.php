@@ -1,4 +1,4 @@
-<?php /* Template Name: Home */ get_header(); ?>
+<?php /* Template Name: Home William */ get_header(); ?>
 
 <!-- Full Page Intro -->
 
@@ -49,9 +49,17 @@
                 <div class="inner-content-block">
                     <h2><?php the_field('hero_2_title'); ?></h2>
                     <p><?php the_field('hero_2_body'); ?></p>
-                    <div class="text-center">
-                        <a class="text-link" href="<?php the_field('hero_2_button_link'); ?>">
-                            <?php the_field('hero_2_btn_text'); ?></a>
+                    <div class="text-center pb-3">
+                        <!-- <a class="text-link" href="<?php the_field('hero_2_button_link'); ?>">
+                            <?php the_field('hero_2_btn_text'); ?></a> -->
+                        <a target="blank" class="text-link"
+                            href="http://locipubs.com/wp-content/uploads/2023/12/The-William_DinnerMenu_Sunday-3.12.23.pdf">
+                            Sample Menu</a>
+                    </div>
+                    <div class="text-center pb-3">
+                        <a target="blank" class="text-link"
+                            href="http://locipubs.com/wp-content/uploads/2023/12/The-William_DinnerMenu_-27.11.23.pdf">
+                            Sample Sunday Menu</a>
                     </div>
 
                 </div>
