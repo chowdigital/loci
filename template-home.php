@@ -87,9 +87,9 @@
     </section>
     <!-- History -->
     <section class="row">
-        <div class="col-12 wide-block"
+        <div class="col-12 history-block"
             style="background-image: url('<?php the_field('photo_1'); ?>'); background-repeat: no-repeat; background-position: center; background-size: cover;">
-            <div class="wide-block-inner">
+            <div class="history-block-inner">
                 <h2>History</h2>
                 <p><?php the_field('hero_3_body'); ?></p>
             </div>
@@ -122,70 +122,5 @@
     </section>
 
 
-    <!-- <section class="whats-on row bg-craft">
-      <div class="col-12">
-      <div class="dark-header text-center">
-      <a href="<?php echo get_home_url(); ?>/whats-on/"><h2>What's On</h2></a>
-  
-
-      </div>
-      <div class="container">
-
-      <div class="row g-5">
-        <div class="col-12 col-lg-7 col-xl-6">
-         <?php $the_query = new WP_Query( 'cat=1&posts_per_page=1' );
-                      if ( $the_query->have_posts() ) {
-                      while ( $the_query->have_posts() ) { $the_query->the_post();  $category = get_the_category();  ?>		
-                    <div class="row">
-                    <a href="<?php echo get_permalink() ?>" class="border bg-craft highlight-overlay" >
-                      <div  class="square-box" style="background-image: url(<?php the_post_thumbnail_url(); ?>); background-repeat: no-repeat; background-position: center; background-size: cover;">
-                      </div>
-
-                      </a>
-                      <div class="row">
-                        <h3 class="pt-4"> <?php the_title(); ?> </h3>
-                        <div class="" >  <?php the_excerpt(); ?>  
-                        </div>
-                        <a class="a-hover" href="<?php echo get_permalink() ?>">
-                          <button type="button" class="btn btn-primary">more</button>
-                        </a>  
-                      </div>
-                    </div>
-          <?php $counter++; } /* end while*/ } /* end if */ wp_reset_postdata(); ?>
-
-        </div>
-        <div class="col-8 col-lg-5 col-xl-6 d-none d-lg-block">
-
-          <?php $the_query = new WP_Query( 'cat=1&posts_per_page=2&offset=1' );
-                      if ( $the_query->have_posts() ) {
-                      while ( $the_query->have_posts() ) { $the_query->the_post();  $category = get_the_category();  ?>		
-                    <div class="row blog-2-3">
-                   
-                    <a href="<?php echo get_permalink() ?>" class="col-12 col-xl-8 border bg-craft highlight-overlay" >
-                        <div class="square-box" style="background-image: url(<?php the_post_thumbnail_url(); ?>); background-repeat: no-repeat; background-position: center; background-size: cover;">
-                        </div>
-                  
-                      </a>
-                      <div class="col-12 col-xl-4 g-lg-0 g-xl-5 pt-lg-2 pt-xl-0">
-                        <h3 class=""> <?php the_title(); ?> </h3>
-                      <p class="d-none d-xxl-block">  <?php echo wp_trim_words(get_the_excerpt(), 8); ?>  
-                      </p>
-                      <a class="a-hover" href="<?php echo get_permalink() ?>">
-                          <button type="button" class="btn btn-primary">more</button>
-                        </a>                        </div>
-                    </div>
-          <?php $counter++; } /* end while*/ } /* end if */ wp_reset_postdata(); ?>
-
-        </div>
-      </div>
-      </div>
-      <div class="btn-50 pt-5 pb-5">
-            <a class="a-hover" href="<?php echo get_home_url(); ?>/whats-on/">
-                <button type="button" class="btn btn-light">More of what's on</button>
-              </a>  
-         
-      </div>  
-    </div>
-  </section> -->
 </main>
 <?php get_footer(); ?>

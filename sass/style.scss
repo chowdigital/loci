@@ -32,9 +32,9 @@ Author URI: https://cloudsdale.co.uk/
 //  4. Footer
 //  5. Containers
 //  6. Buttons
-//  6. Gallery ???
-//  7. Blog
-//  8. Single blog post
+//  7. Gallery
+//  8. Blog
+//  8b. Single blog post
 //  9. Default Page
 //  10. Loci Pubs page
 
@@ -242,14 +242,14 @@ a:visited {
 }
 
 a:hover {
-  color: $blue;
+  color: $highlight;
 }
 .image-content-blocks,
 nav {
   a {
     font-family: "Monthoers", sans-serif;
     color: $craft;
-    transition-duration: 0.2s;
+    transition-duration: 0.3s;
     font-size: 30px;
     text-align: center;
     text-decoration: none;
@@ -260,22 +260,28 @@ nav {
     padding: 5px;
     border-bottom: 2px solid $craft;
   }
-  a:visited {
-    color: $craft;
-  }
 }
 .nav-link:focus {
   color: $craft;
 }
 .nav-link:hover {
-  color: $navy-blue;
-  transition-duration: 0s;
+  color: $highlight;
+  transition-duration: 0.3s;
+  border-bottom: 2px solid $highlight;
 }
-
+.nav-link:focus,
+.nav-link:hover {
+  color: $highlight;
+}
 .v-center {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+.text-link:hover {
+  color: $highlight;
+  transition-duration: 0.3s;
+  border-bottom: 2px solid $highlight;
 }
 // ===========================================================================
 //  2. Typography
@@ -612,6 +618,10 @@ li {
     margin-top: 30px;
   }
 }
+.nav-btn {
+  background-color: transparent;
+  color: $craft;
+}
 // ===========================================================================
 //  4. Footer
 // ===========================================================================
@@ -859,12 +869,12 @@ li {
   }
 }
 
-.wide-block {
+.history-block {
   flex-basis: 100%;
   margin-bottom: 14px;
   color: #dfc797;
 }
-.wide-block-inner {
+.history-block-inner {
   padding: 20%;
   > * {
     margin: 0 !important;
@@ -874,90 +884,40 @@ li {
     padding-bottom: 40px;
   }
 }
+
 // ===========================================================================
 //  6. Buttons
 // ===========================================================================
-
-.btn {
-  transition: box-shadow 0.3s ease-in-out;
-}
-.btn:hover {
-  transition: box-shadow 0.3s ease-in-out;
-  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 10px 25px 0 rgba(0, 0, 0, 0.19);
-}
-
-.btn-primary {
-  border: 5px solid;
-  border-image-outset: 0;
-  border-image-slice: 100%;
-  border-image-source: none;
-  border-image-width: 100px;
-  border-image-repeat: repeat;
-  border-radius: 0px;
-  transition: color 0.4s;
-  background-repeat: repeat;
-  width: 100%;
-  border-image-outset: 3px;
-  border: 5px solid $primary;
-  background-color: $primary;
-  border-color: $highlight;
-  border-image: url(../loci/assets/texture/w-blue-xs.png) 5;
-  background-image: url(../loci/assets/texture/blue-xs.png);
-  border-color: $highlight;
-  background-color: $primary;
+.btn-nav {
+  background-color: transparent;
+  color: inherit; /* Inherits the color from the parent */
+  border: none; /* Adds a basic border */
+  padding: 0.375rem 0.75rem; /* Adjust padding as needed */
+  font-size: 1rem; /* Resets to default font size */
+  line-height: 1.5; /* Standard line height */
+  border-radius: 0; /* Removes border-radius */
+  transition: none; /* Disables transition effects */
+  font-family: "Monthoers", sans-serif;
   color: $craft;
-  &:visited,
-  &:hover {
-    color: $craft;
-  }
-}
-.btn-secondary {
-  border: 5px solid;
-  border-image-outset: 0;
-  border-image-slice: 100%;
-  border-image-source: none;
-  border-image-width: 100px;
-  border-image-repeat: repeat;
-  border-radius: 0px;
-  transition: color 0.4s;
-  background-repeat: repeat;
-  width: 100%;
-  border-image-outset: 3px;
-  border-image: url(../loci/assets/texture/craft-xs.png) 5;
-  background-image: url(../loci/assets/texture/blue-xs.png);
-  color: $craft;
-  &:visited,
-  &:hover {
-    color: $craft;
-  }
-}
-.btn-light {
-  border: 5px solid;
-  border-image-outset: 0;
-  border-image-slice: 100%;
-  border-image-source: none;
-  border-image-width: 100px;
-  border-image-repeat: repeat;
-  border-radius: 0px;
-  transition: color 0.4s;
-  background-repeat: repeat;
-  width: 100%;
-  border-image-outset: 3px;
-  border-image: url(../loci/assets/texture/w-blue-xs.png) 5;
-  background-image: url(../loci/assets/texture/craft-xs.png);
-  color: $primary;
-  &:visited,
-  &:hover {
-    color: $primary;
-  }
+  transition-duration: 0.2s;
+  font-size: 25px;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  padding: 0px;
+  border-bottom: 2px solid #dfc797;
+  height: 35px;
+  margin-left: 10px;
 }
 
-.btn-50 {
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+.btn-nav:hover,
+.btn-nav:focus {
+  background-color: transparent; /* Keeps background transparent on hover/focus */
+  color: $craft; /* Keeps text color the same on hover/focus */
+  box-shadow: none; /* Removes box shadow */
+  border-bottom: 2px solid $craft;
 }
-
 // ===========================================================================
 //  6. Gallery
 // ===========================================================================
@@ -979,112 +939,94 @@ li {
   }
 }
 // ===========================================================================
-//  7. Blog
+//  8a. Blog
 // ===========================================================================
-.whats-on {
-  padding-bottom: 2em;
+.page-head-img {
+  padding-bottom: 100%;
+  margin-top: 50px;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  h1 {
+    color: $craft;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Horizontal offset, vertical offset, blur radius, color */
+  }
+}
+@media (min-width: $md) {
+  .page-head-img {
+    padding-bottom: 50%;
+    margin-top: 100px;
+  }
 }
 
-.blog-2-3 {
-  margin-bottom: 1em;
-}
 @media (min-width: $xl) {
-  .blog-2-3:nth-child(2) {
-    .border {
-      order: 2;
+  .page-head-img {
+    padding-bottom: 40%;
+    margin-top: 100px;
+  }
+}
+
+// ===========================================================================
+//  8b. Single Blog Post
+// ===========================================================================
+.wide-block {
+  flex-basis: 100%;
+  margin-bottom: 14px;
+  color: #dfc797;
+  padding-bottom: 13px;
+}
+.wide-block-inner {
+  padding: 20%;
+  > * {
+    margin: 0 !important;
+  }
+  h2,
+  p {
+    padding-bottom: 40px;
+  }
+}
+.devide-line {
+  height: 13px;
+  width: 100%;
+}
+#whatsOnBlocks {
+  > :nth-child(odd) {
+    flex-direction: row-reverse;
+    :nth-child(1) {
+      margin: 7px 0px 7px 7px;
+    }
+    :nth-child(2) {
+      margin: 7px 7px 7px 0px;
     }
   }
 }
-/// Pagination
-
-#pagination-main {
-  padding-top: 200px;
-  padding-bottom: 200px;
-}
-
-.pagenav {
-  padding-top: 30px;
-}
-
-@media (min-width: $md) {
-  .blog-post-container {
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.paginate-links {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  :nth-child(1) {
+    margin: 0;
   }
-  .blog-post-list {
-    width: 45%;
+  :nth-child(2) {
+    margin: 0;
+  }
+  .alignleft {
+    float: left;
   }
 
-  .blog-post-list:nth-child(odd) {
-    margin-top: 6em;
-  }
-  .blog-post-list:nth-child(1) {
-    width: 100%;
-    margin-top: 0em;
-    .square-box::before {
-      padding-top: 50%;
-    }
+  .alignright {
+    float: right;
   }
 }
-// ===========================================================================
-//  8. Single Blog Post
-// ===========================================================================
-#blog-main {
-  padding-top: 300px;
-  padding-bottom: 200px;
-}
-.blog-container {
-  position: relative;
-  padding: 0px 10px;
-}
-.blog-content {
-  top: -100px;
-  position: relative;
-}
-.post-thumb {
-  height: 300px;
-  width: 300px;
-  margin-right: auto;
-  margin-left: auto;
-  position: relative;
-  z-index: 3;
-  top: -150px;
-}
-@media (min-width: $md) {
-  .blog-container {
-    padding: 0px 20px;
-  }
-}
-@media (min-width: $lg) {
-  .blog-container {
-    padding: 0px 50px;
-  }
-  #blog-main {
-    padding-top: 400px;
-    padding-bottom: 200px;
-  }
-  .post-thumb {
-    height: 400px;
-    width: 400px;
-    top: -200px;
-  }
-}
-@media (min-width: $xl) {
-  .post-thumb {
-    margin-right: 0px;
-  }
-  .blog-container {
-    padding: 0px 100px;
-  }
-}
-@media (min-width: $xxl) {
-  .blog-container {
-    padding: 0px 200px;
-  }
-}
-
 // ===========================================================================
 //  9. Default Page
 // ===========================================================================
@@ -1239,27 +1181,6 @@ li {
 
 // MISC
 
-.border-primary {
-  border: 5px solid;
-  border-image-outset: 0;
-  border-image-slice: 100%;
-  border-image-source: none;
-  border-image-width: 100px;
-  border-image-repeat: repeat;
-  border-radius: 0px;
-  transition: color 0.4s;
-  background-repeat: repeat;
-  border-image-outset: 3px;
-  border: 5px solid $primary;
-  background-color: $primary;
-  border-color: $highlight;
-  border-image: url(../loci/assets/texture/w-blue-xs.png) 5;
-  background-image: url(../loci/assets/texture/blue-xs.png);
-  border-color: $highlight;
-  background-color: $primary;
-  color: $craft;
-  &:visited,
-  &:hover {
-    color: $craft;
-  }
-}
+// ===========================================================================
+//  11. Modals
+// ===========================================================================

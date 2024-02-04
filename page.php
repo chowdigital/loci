@@ -14,44 +14,46 @@
 
 get_header();
 ?>
-<div class="bg-craft blue-overlay">
-<div class="page-img-header" style="background-image: url('<?php the_post_thumbnail_url(); ?>'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+<main id="" class="bg-craft highlight-overlay">
 
-</div>
 
-	<main id="page-main" class="bg-dot">
+    <section class="row bg-craft navy-overlay">
+        <div class="page-head-img"
+            style="background-image: url(<?php the_post_thumbnail_url(); ?>); background-repeat: no-repeat; background-position: center; background-size: cover;">
+
+        </div>
+        <div class="devide-line bg-craft highlight-overlay"></div>
+        <div class="col-12 wide-block">
+            <div class="wide-block-inner">
+                <?php
+						the_title( '<h2 class="entry-title">', '</h2>');
+						the_content(
+							sprintf(
+								wp_kses(
+									/* translators: %s: Name of current post. Only visible to screen readers */
+									__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'cloudsdale-master' ),
+									array(
+										'span' => array(
+											'class' => array(),
+										),
+									)
+								),
+								wp_kses_post( get_the_title() )
+							)
+						);
+
 	
-		<section class="page-container bg-craft container">
-			<div class="page-content">
-			<?php the_title( '<h1 class="">', '</h1>' ); ?>
-			<?php
-                the_content(
-                    sprintf(
-                        wp_kses(
-                            /* translators: %s: Name of current post. Only visible to screen readers */
-                            __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'cloudsdale-theme' ),
-                            array(
-                                'span' => array(
-                                    'class' => array(),
-                                ),
-                            )
-                        ),
-                        wp_kses_post( get_the_title() )
-                    )
-                );
+		?>
+            </div>
 
-                wp_link_pages(
-                    array(
-                        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'cloudsdale-theme' ),
-                        'after'  => '</div>',
-                    )
-                );
-                ?>
+        </div>
 
-			</div>
-		</section>
-	
-	</main><!-- #main -->
-	</div>
+    </section>
+
+
+
+
+</main><!-- #main -->
+
 <?php
 get_footer();
