@@ -85,49 +85,43 @@
             </div>
         </div>
     </section>
-
-
-    <section class="row bg-craft blue-overlay">
-        <div class="bg-dot">
-            <div class="gallery-container">
-                <div class="light-header text-center">
-                    <a href="<?php echo get_home_url(); ?>/gallery/">
-                        <h2>Gallery</h2>
-                    </a>
-
-                </div>
-                <div class="col-12 gallery-parent">
-                    <div class="gallery-col">
-                        <div class="gallery-img pink-border bg-craft highlight-overlay">
-                            <img src="<?php the_field('photo_1'); ?>" />
-                        </div>
-                        <div class="gallery-img bg-craft highlight-overlay gallery-portrait-left">
-                            <img src="<?php the_field('photo_2'); ?>" />
-                        </div>
-                    </div>
-                    <div class="gallery-col gallery-col-middle">
-                        <div class="gallery-img bg-craft highlight-overlay">
-                            <img src="<?php the_field('photo_3'); ?>" />
-                        </div>
-                    </div>
-                    <div class="gallery-col hide-lg">
-                        <div class="gallery-img bg-craft highlight-overlay gallery-portrait-right">
-                            <img class="" src="<?php the_field('photo_4'); ?>" />
-                        </div>
-                        <div class="gallery-img bg-craft highlight-overlay">
-                            <img src="<?php the_field('photo_5'); ?>" />
-                        </div>
-
-                    </div>
-                </div>
-                <div class="btn-50 pt-5 pb-5">
-                    <a class="a-hover" href="<?php echo get_home_url(); ?>/gallery/">
-                        <button type="button" class="btn btn-light">See more pictures</button>
-                    </a>
-
-                </div>
+    <!-- History -->
+    <section class="row">
+        <div class="col-12 wide-block"
+            style="background-image: url('<?php the_field('photo_1'); ?>'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+            <div class="wide-block-inner">
+                <h2>History</h2>
+                <p><?php the_field('hero_3_body'); ?></p>
             </div>
+
+        </div>
+
     </section>
+    <!-- Gallery -->
+    <section>
+        <div class="row">
+            <div class="col-6 col-md-3 square-img" style="background-image: url('<?php the_field('photo_1'); ?>');">
+            </div>
+            <div class="col-6 col-md-3 square-img" style="background-image: url('<?php the_field('photo_2'); ?>');">
+            </div>
+            <div class="col-6 col-md-3 square-img" style="background-image: url('<?php the_field('photo_3'); ?>');">
+            </div>
+            <div class="col-6 col-md-3 square-img" style="background-image: url('<?php the_field('photo_4'); ?>');">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3 square-img" style="background-image: url('<?php the_field('photo_5'); ?>');">
+            </div>
+            <div class="col-6 col-md-3 square-img" style="background-image: url('<?php the_field('photo_6'); ?>');">
+            </div>
+            <div class="col-6 col-md-3 square-img" style="background-image: url('<?php the_field('photo_7'); ?>');">
+            </div>
+            <div class="col-6 col-md-3 square-img" style="background-image: url('<?php the_field('photo_8'); ?>');">
+            </div>
+        </div>
+    </section>
+
+
     <!-- <section class="whats-on row bg-craft">
       <div class="col-12">
       <div class="dark-header text-center">

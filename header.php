@@ -81,7 +81,7 @@
 
                         </div>
                         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav"
-                            aria-labelledby="offcanvasNavLabel">
+                            aria-labelledby="offcanvasNavLabel" data-bs-scroll="true">
                             <div class="close-box">
                                 <a class="menu-toggle" data-bs-dismiss="offcanvas" aria-label="Close">
                                     <div id="menuIconClose"></div>

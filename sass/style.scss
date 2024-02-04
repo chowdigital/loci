@@ -156,6 +156,18 @@ html {
 .page {
   margin: 0;
 }
+// max size
+body {
+  background: $craft;
+  background-image: url(../loci/assets/texture/craft.png);
+  background-repeat: repeat;
+}
+
+#page {
+  max-width: 2000px;
+  margin: auto;
+  box-shadow: 5px 10px 8px #888888;
+}
 // Settings for navbar in edit mode
 
 body.logged-in {
@@ -183,6 +195,9 @@ body {
   background-color: $primary;
 }
 
+.row {
+  --bs-gutter-x: 0;
+}
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -843,6 +858,22 @@ li {
     }
   }
 }
+
+.wide-block {
+  flex-basis: 100%;
+  margin-bottom: 14px;
+  color: #dfc797;
+}
+.wide-block-inner {
+  padding: 20%;
+  > * {
+    margin: 0 !important;
+  }
+  h2,
+  p {
+    padding-bottom: 40px;
+  }
+}
 // ===========================================================================
 //  6. Buttons
 // ===========================================================================
@@ -931,70 +962,22 @@ li {
 //  6. Gallery
 // ===========================================================================
 
-.gallery-parent {
-  display: flex;
-  flex-direction: row;
-}
-.gallery-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0.5em;
-}
-
-.gallery-img {
-  margin: 0.5em;
-  padding: 5px;
-  align-self: center;
-  img {
-    position: relative;
-    z-index: 101;
-  }
-}
-
-.gallery-container {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
+.square-img {
+  padding-bottom: 50%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-position: center;
+  background-size: cover;
 }
 @media (min-width: $md) {
-  .gallery-container {
-    max-width: 960px;
-    padding-right: var(--bs-gutter-x, 0.75rem);
-    padding-left: var(--bs-gutter-x, 0.75rem);
+  .square-img {
+    padding-bottom: 25%;
   }
 }
-@media (min-width: $lg) {
-  .gallery-container {
-    max-width: 1140px;
-  }
-}
-@media (min-width: $xl) {
-  .gallery-container {
-    max-width: 1320px;
-  }
-}
-
-.gallery-portrait-left {
-  margin-left: 38%;
-  width: 62%;
-}
-.gallery-portrait-right {
-  margin-right: 38%;
-  width: 62%;
-}
-.gallery-button {
-  padding: 2em 0em;
-}
-
-@media (max-width: $lg) {
-  .hide-lg {
-    display: none;
-  }
-}
-
-//Phse 3 button
-
 // ===========================================================================
 //  7. Blog
 // ===========================================================================
