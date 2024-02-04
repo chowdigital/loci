@@ -86,7 +86,7 @@
         </div>
     </section>
 
-    <!--
+
     <section class="row bg-craft blue-overlay">
         <div class="bg-dot">
             <div class="gallery-container">
@@ -120,14 +120,14 @@
 
                     </div>
                 </div>
-                <!--    <div class="btn-50 pt-5 pb-5">
+                <div class="btn-50 pt-5 pb-5">
                     <a class="a-hover" href="<?php echo get_home_url(); ?>/gallery/">
                         <button type="button" class="btn btn-light">See more pictures</button>
                     </a>
 
                 </div>
             </div>
-    </section> -->
+    </section>
     <!-- <section class="whats-on row bg-craft">
       <div class="col-12">
       <div class="dark-header text-center">

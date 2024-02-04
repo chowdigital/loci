@@ -14,7 +14,9 @@ items.forEach((el) => {
   }
 });
 */
-/*When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size */
+/* When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size */
+/*
+
 window.onscroll = function () {
   scrollFunction();
 };
@@ -75,7 +77,7 @@ function scrollFunction() {
       menuIconTransitionDelay;
   }
 }
-
+*/
 // force refresh when website crosses 576px
 // Set the initial window size
 let isBelow576 = window.innerWidth <= 576;

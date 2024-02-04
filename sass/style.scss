@@ -160,8 +160,23 @@ html {
 
 body.logged-in {
   nav,
-  #offcanvasNav {
-    margin-top: 32px;
+  #offcanvasNav,
+  .close-box {
+    margin-top: 46px;
+  }
+}
+@media (min-width: $md) {
+  body.logged-in {
+    nav,
+    #offcanvasNav,
+    .close-box {
+      margin-top: 32px;
+    }
+  }
+}
+@media screen and (max-width: $md) {
+  #wpadminbar {
+    position: fixed;
   }
 }
 body {
@@ -416,10 +431,15 @@ li {
     background-repeat: no-repeat;
     background-position: center center;
     width: 36.67px;
-    height: 20px;
-    margin-top: 27px;
+    height: 24px;
+    margin-top: 13px;
     display: inline-block;
     transition-duration: 0.6s;
+  }
+}
+@media (min-width: $md) {
+  .menu-toggle #menuIcon {
+    margin-top: 38px;
   }
 }
 @media (min-width: $xl) {
@@ -468,6 +488,9 @@ li {
 }
 
 // offcanvas start
+.offcanvas-start {
+  width: 100%;
+}
 #loci-logo {
   width: 100%;
   max-width: 200px;
@@ -475,17 +498,21 @@ li {
   margin-left: auto;
   margin-right: auto;
 }
-#clifton-logo {
-  width: 160px;
+#pub-logo,
+#pub-crest {
+  width: 400px;
   padding: 5px 5px;
   margin-left: auto;
   margin-right: auto;
+}
+#pub-crest {
+  width: 300px;
 }
 .page-item {
   color: $craft;
   width: 100%;
 }
-.menu-menu-1-container {
+.navbar-nav {
   position: relative;
 
   display: flex;
@@ -503,27 +530,15 @@ li {
   }
   a,
   a:visited {
-    color: $craft;
+    color: $blue-dark;
   }
   a:hover {
     color: $highlight;
   }
 }
 
-.offcanvas-body::before {
-  position: fixed;
-  content: "";
-  top: 0px;
-  left: 0px;
-  height: 100%;
-  border: none;
-  background: #136c91;
-  mix-blend-mode: multiply;
-  width: 400px;
-}
-
 @media (min-width: $xl) {
-  .menu-menu-1-container {
+  .navbar-nav {
     ul {
       display: flex;
       li {
@@ -547,7 +562,18 @@ li {
     z-index: 100;
   }
 }
+.offcanvas-body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
 
+.close-box {
+  position: absolute;
+  left: 0;
+  top: 0px;
+}
 .nav-link {
   padding: 0px;
   border-bottom: 2px solid $craft;

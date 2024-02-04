@@ -56,12 +56,11 @@
                     <?php endif;  ?>
                     <nav id="site-navigation" class="main-navigation fixed-top">
                         <div id="navbar" class="cm-nav bg-craft navy-overlay shadow container-fluid">
-
-                            <!--  <a id="menuToggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"
-                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav">
-                        <div id="menuIcon"></div>
-                    </a> -->
-                            <a id="navbrand" class="navbar-brand navbrand"
+                            <a id="menuToggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"
+                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav">
+                                <div id="menuIcon"></div>
+                            </a>
+                            <a id="navbrand" class="navbar-brand navbrand d-none d-md-block"
                                 href="<?php echo esc_url( home_url( '/william' ) ); ?>">
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/logos/TheWilliam_horizontalLogo_1b.png"
                                     alt="Cifton Logo" style>
@@ -83,16 +82,17 @@
                         </div>
                         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav"
                             aria-labelledby="offcanvasNavLabel">
-
-                            <div class="offcanvas-header bg-craft blue-overlay">
-                                <a id="clifton-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img
-                                        src="<?php echo get_template_directory_uri(); ?>/assets/logos/TheWilliam_horizontalLogo_1b.png"
-                                        alt="Cifton Logo" style=""></a>
-                                <a class="" data-bs-dismiss="offcanvas" aria-label="Close">
+                            <div class="close-box">
+                                <a class="menu-toggle" data-bs-dismiss="offcanvas" aria-label="Close">
                                     <div id="menuIconClose"></div>
                                 </a>
                             </div>
+
                             <div class="offcanvas-body bg-craft">
+
+                                <a id="pub-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img
+                                        src="<?php echo get_template_directory_uri(); ?>/assets/william/TheWilliam_horizontalLogo_2b.png"
+                                        alt="The William Logo" style=""></a>
                                 <?php
 							wp_nav_menu(
 								array(
@@ -104,12 +104,11 @@
 								)
 							);
 							?>
+                                <a id="pub-crest" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img
+                                        src="<?php echo get_template_directory_uri(); ?>/assets/william/TheWilliam_Crest_2b.png"
+                                        alt="The William Logo" style=""></a>
                             </div>
-                            <div class="modal-footer-logo bg-craft">
-                                <a id="loci-logo" href=""><img
-                                        src="<?php echo get_template_directory_uri(); ?>/assets/logos/loci.png"
-                                        alt=""></a>
-                            </div>
+
                         </div>
                     </nav><!-- #site-navigation -->
 
