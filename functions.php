@@ -305,7 +305,7 @@ function create_posttype_again() {
             'show_in_rest' => true,
 			'supports' => array( 'title', 'editor', 'revisions' ),
 			'menu_icon' => 'dashicons-smiley',
-			
+            'show_in_nav_menus' => true, 		
 
 	
  
@@ -317,6 +317,17 @@ function create_posttype_again() {
 // Hooking up our function to theme setup
 add_action( 'init', 'create_posttype_again' );
 
+// Add a no follow to menus pages so all menu info can be in the archive 
+
+function add_noindex_to_menus_post_type() {
+    // Check if on a single post of the 'menus' custom post type
+    if (is_singular('menus')) {
+        // Adding the noindex, follow meta tag to the head section of the page
+        echo '<meta name="robots" content="noindex, follow">';
+    }
+}
+
+add_action('wp_head', 'add_noindex_to_menus_post_type');
 /* MENUS END*/
 
 
