@@ -6,8 +6,8 @@
     style="height: 100vh; background-image:  url(<?php the_post_thumbnail_url(); ?>); background-repeat: no-repeat; background-position: center; background-size: cover;">
     <div class="col-12 text-center clifton-crest row">
 
-        <div class="col-12 col-md-10 col-lg-6 bg-craft p-3 border-primary">
-            <h2>Full website coming soon</h2>
+        <div class="col-12 col-md-10 col-lg-6 ">
+
         </div>
 
     </div>
@@ -88,8 +88,8 @@
     <!-- History -->
     <section class="row">
         <div class="col-12 history-block"
-            style="background-image: url('<?php the_field('photo_1'); ?>'); background-repeat: no-repeat; background-position: center; background-size: cover;">
-            <div class="history-block-inner">
+            style="background-image: url('http://staging2.locipubs.com/wp-content/uploads/2024/02/JSP.LOC_.05.12.23-49-scaled-1.png'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+            <div class="history-block-inner" style="filter: none;">
                 <h2>History</h2>
                 <p><?php the_field('hero_3_body'); ?></p>
             </div>

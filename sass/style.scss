@@ -537,22 +537,29 @@ li {
 .offcanvas-start {
   width: 100%;
 }
-#loci-logo {
+
+#pub-logo {
   width: 100%;
-  max-width: 200px;
-  padding: 5px 5px;
-  margin-left: auto;
-  margin-right: auto;
-}
-#pub-logo,
-#pub-crest {
-  width: 400px;
   padding: 5px 5px;
   margin-left: auto;
   margin-right: auto;
 }
 #pub-crest {
-  width: 300px;
+  display: none;
+}
+@media screen and (min-width: $md), screen and (min-height: 900px) {
+  #pub-crest {
+    display: block;
+  }
+}
+
+@media (min-width: $md) {
+  #pub-crest {
+    width: 100%;
+    padding: 5px 5px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .page-item {
   color: $craft;
@@ -560,26 +567,41 @@ li {
 }
 .navbar-nav {
   position: relative;
-
   display: flex;
   justify-content: space-around;
-  ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 100%;
-    li {
-      padding: 10px;
-      text-transform: uppercase;
-      font-size: 20px;
-    }
+  li {
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align: center !important;
   }
   a,
-  a:visited {
+  a:visited,
+  a:focus {
     color: $blue-dark;
+    outline: none;
   }
-  a:hover {
-    color: $highlight;
+  a {
+    position: relative;
+    display: inline-block; /* Ensures the container fits the content's width */
+    text-decoration: none; /* Optional: removes the default underline */
+  }
+
+  a::after {
+    content: "";
+    content: "";
+    position: absolute;
+    width: 0; /* Start with no width */
+    height: 3px; /* Thickness of the underline */
+    background: $blue-dark; /* Color of the underline */
+    bottom: 0; /* Position at the bottom of the element */
+    left: 50%; /* Start from the middle */
+    transition: width 0.3s ease, left 0.3s ease; /* Smooth transition for the underline */
+  }
+
+  a:hover::after {
+    width: 100%; /* Full width on hover */
+    left: 0; /* Align to the left edge */
   }
 }
 
@@ -908,6 +930,10 @@ li {
   color: #dfc797;
 }
 .history-block-inner {
+  h2,
+  p {
+    text-shadow: 1px 3px 11px #000000;
+  }
   padding: 20%;
   > * {
     margin: 0 !important;

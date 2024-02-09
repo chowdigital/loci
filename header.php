@@ -95,8 +95,12 @@
 
                             <div class="offcanvas-body bg-craft">
 
-                                <a id="pub-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img
+                                <a id="pub-logo" href="<?php echo esc_url( home_url( '/william' ) ); ?>">
+                                    <img class="d-none d-md-inline"
                                         src="<?php echo get_template_directory_uri(); ?>/assets/william/TheWilliam_horizontalLogo_2b.png"
+                                        alt="The William Logo" style="">
+                                    <img class="d-md-none"
+                                        src="<?php echo get_template_directory_uri(); ?>/assets/william/TheWilliam_verticalLogo_2b.png"
                                         alt="The William Logo" style=""></a>
                                 <?php
 							wp_nav_menu(
@@ -111,7 +115,7 @@
 							?>
                                 <a id="pub-crest" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img
                                         src="<?php echo get_template_directory_uri(); ?>/assets/william/TheWilliam_Crest_2b.png"
-                                        alt="The William Logo" style=""></a>
+                                        alt="The William Logo" style="width:200px;"></a>
                             </div>
 
                         </div>
