@@ -37,6 +37,7 @@ Author URI: https://cloudsdale.co.uk/
 //  8b. Single blog post
 //  9. Default Page
 //  10. Loci Pubs page
+//  11. Menu page
 
 // https://my.corebook.io/OJUcHwxiAK3lzsU5Bc5DvKiXiHVz7xX0/loci-1/introduction
 
@@ -238,11 +239,11 @@ body {
 //a links
 a,
 a:visited {
-  color: inherit;
+  color: $craft;
 }
 
 a:hover {
-  color: $highlight;
+  color: $yellow;
 }
 .image-content-blocks,
 nav {
@@ -257,21 +258,43 @@ nav {
     text-transform: lowercase;
   }
   .text-link {
-    padding: 5px;
-    border-bottom: 2px solid $craft;
+    padding-bottom: 5px;
   }
 }
-.nav-link:focus {
+.btn-nav {
+  background-color: transparent;
+  color: inherit; /* Inherits the color from the parent */
+  border: none; /* Adds a basic border */
+  padding: 0.375rem 0.75rem; /* Adjust padding as needed */
+  font-size: 1rem; /* Resets to default font size */
+  line-height: 1.5; /* Standard line height */
+  border-radius: 0; /* Removes border-radius */
+  transition: none; /* Disables transition effects */
+  font-family: "Monthoers", sans-serif;
   color: $craft;
-}
-.nav-link:hover {
-  color: $highlight;
+  font-size: 25px;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  padding: 0px;
+  border-bottom: 2px solid $craft;
+  height: 35px;
+  margin-left: 10px;
   transition-duration: 0.3s;
-  border-bottom: 2px solid $highlight;
+}
+.nav-link:hover,
+.btn-nav:hover {
+  color: $yellow;
+  transition-duration: 0.3s;
+  border-bottom: 2px solid $yellow;
 }
 .nav-link:focus,
-.nav-link:hover {
-  color: $highlight;
+.nav-link:hover,
+.btn-nav:focus,
+.btn-nav:hover {
+  color: $yellow;
+  border-bottom: 2px solid $yellow;
 }
 .v-center {
   display: flex;
@@ -279,10 +302,34 @@ nav {
   flex-direction: column;
 }
 .text-link:hover {
-  color: $highlight;
+  color: $yellow;
   transition-duration: 0.3s;
-  border-bottom: 2px solid $highlight;
 }
+.text-link {
+  position: relative;
+  display: inline-block; /* Ensures the container fits the content's width */
+  text-decoration: none; /* Removes the default underline */
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.text-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, $yellow 50%, $craft 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.3s ease-out;
+}
+
+.text-link:hover::after {
+  background-position: left bottom;
+}
+
 // ===========================================================================
 //  2. Typography
 // ===========================================================================
@@ -479,28 +526,6 @@ li {
   transition-duration: 0.6s;
 }
 
-#bookBtn,
-#bookBtn2 {
-  transition-duration: 0.6s;
-  margin-top: 7px;
-  right: 5px;
-  position: fixed;
-}
-#bookBtn2 {
-  margin-left: 5px;
-}
-@media (min-width: $md) {
-  #bookBtn,
-  #bookBtn2 {
-    transition-duration: 0.6s;
-    margin-top: 30px;
-    right: 18px;
-    position: fixed;
-  }
-  #bookBtn2 {
-    margin-left: 5px;
-  }
-}
 @media (min-width: 992px) {
   .menu-toggle {
     width: 110px;
@@ -622,6 +647,14 @@ li {
   background-color: transparent;
   color: $craft;
 }
+.nav-link {
+  color: $craft;
+}
+
+.nav-link:hover {
+  color: $yellow;
+}
+
 // ===========================================================================
 //  4. Footer
 // ===========================================================================
@@ -888,36 +921,7 @@ li {
 // ===========================================================================
 //  6. Buttons
 // ===========================================================================
-.btn-nav {
-  background-color: transparent;
-  color: inherit; /* Inherits the color from the parent */
-  border: none; /* Adds a basic border */
-  padding: 0.375rem 0.75rem; /* Adjust padding as needed */
-  font-size: 1rem; /* Resets to default font size */
-  line-height: 1.5; /* Standard line height */
-  border-radius: 0; /* Removes border-radius */
-  transition: none; /* Disables transition effects */
-  font-family: "Monthoers", sans-serif;
-  color: $craft;
-  transition-duration: 0.2s;
-  font-size: 25px;
-  text-align: center;
-  text-decoration: none;
-  letter-spacing: 0.1em;
-  text-transform: lowercase;
-  padding: 0px;
-  border-bottom: 2px solid #dfc797;
-  height: 35px;
-  margin-left: 10px;
-}
 
-.btn-nav:hover,
-.btn-nav:focus {
-  background-color: transparent; /* Keeps background transparent on hover/focus */
-  color: $craft; /* Keeps text color the same on hover/focus */
-  box-shadow: none; /* Removes box shadow */
-  border-bottom: 2px solid $craft;
-}
 // ===========================================================================
 //  6. Gallery
 // ===========================================================================
@@ -1179,8 +1183,94 @@ li {
   width: 80%;
 }
 
-// MISC
+// ===========================================================================
+//  11. Menu page
+// ===========================================================================
 
-// ===========================================================================
-//  11. Modals
-// ===========================================================================
+.menu-tab {
+  color: $blue-dark;
+
+  h1 {
+    padding-bottom: 30px;
+  }
+  h2 {
+    font-family: "Monthoers", sans-serif;
+    text-transform: lowercase;
+    font-size: 30px;
+  }
+  p {
+    margin-bottom: 10px;
+    font-family: "Monthoers", sans-serif;
+    text-transform: lowercase;
+    margin-bottom: 0;
+    font-size: 20px;
+    line-height: 20px;
+  }
+  br {
+    margin-bottom: 10px;
+  }
+}
+
+.nav-tabs {
+  border-bottom: none;
+  display: flex;
+  flex-direction: column;
+}
+.nav-tabs .nav-link {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  text-align: left;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus-visible {
+  color: $yellow;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.nav-tabs .nav-link.active {
+  color: $highlight;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.menu-content-block {
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+.block-right {
+  margin: 7px 0px 7px 7px;
+}
+.block-left {
+  margin: 7px 7px 7px 0px;
+}
+@media (min-width: $md) {
+  .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    position: sticky;
+    top: 100px;
+    align-self: flex-start;
+  }
+}
+.nav-tabs {
+  li {
+    padding-bottom: 20px;
+  }
+  h2 {
+    font-size: 25px;
+  }
+}
+.nav-link {
+  color: $craft;
+}
+
+.nav-link:hover {
+  color: $yellow;
+}

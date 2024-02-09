@@ -22,10 +22,10 @@ get_header();
 
     <section id="menuBlocks" class="image-content-blocks">
 
-        <div class="image-content-block">
+        <div class="menu-content-block">
 
-            <div class="content-block bg-craft navy-overlay">
-                <div class="inner-content-block">
+            <div class="content-block bg-craft navy-overlay block-left">
+                <div class="inner-content-block sticky ">
                     <?php 
 // Setup the query for the 'menus' custom post type
 $custom_query = new WP_Query(array(
@@ -52,7 +52,9 @@ if ($custom_query->have_posts()) :
                             <a class="nav-link <?php echo ($tabIndex === 0) ? 'active' : ''; ?>"
                                 id="<?php echo $tabId; ?>" data-bs-toggle="tab" href="#<?php echo $tabId; ?>-panel"
                                 role="tab" aria-controls="<?php echo $tabId; ?>-panel"
-                                aria-selected="<?php echo ($tabIndex === 0) ? 'true' : 'false'; ?>"><?php the_title(); ?></a>
+                                aria-selected="<?php echo ($tabIndex === 0) ? 'true' : 'false'; ?>">
+                                <h2><?php the_title(); ?></h2>
+                            </a>
                         </li>
                         <?php 
         $tabIndex++;
@@ -61,10 +63,10 @@ if ($custom_query->have_posts()) :
                     </ul>
                 </div>
             </div>
-            <div class="content-block bg-craft">
+            <div class="content-block bg-craft block-right">
 
 
-                <div class="inner-content-block tab-content">
+                <div class="inner-content-block tab-content menu-tab">
                     <?php
     // Reset post data and tab index for creating tab panels
     $custom_query->rewind_posts();
@@ -76,8 +78,8 @@ if ($custom_query->have_posts()) :
         ?>
                     <div class="tab-pane fade <?php echo ($tabIndex === 0) ? 'show active' : ''; ?>"
                         id="<?php echo $tabId; ?>-panel" role="tabpanel" aria-labelledby="<?php echo $tabId; ?>">
-                        <h2><?php the_title(); ?></h2>
-                        <p><?php the_content(); ?></p>
+                        <h1><?php the_title(); ?></h1>
+                        <div><?php the_content(); ?></div>
                     </div>
                     <?php
         $tabIndex++;
