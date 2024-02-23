@@ -12,21 +12,21 @@
 ?>
 
 
-<section class="bg-craft highlight-overlay">
 
-    <div class="text-center p-2 pt-5 pb-5">
-        <h2>NEWSLETTER SIGN UP</h2>
-        <p>Be the first to hear about upcoming news, events and offers.</p>
-        <?php get_template_part( 'template-parts/mail-chimp', get_post_type() ); ?>
-
-    </div>
-
-</section>
 <?php if ( is_page_template( 'template-loci.php' ) ) : ?>
 <footer class="d-none">
     <?php else : ?>
     <footer class="bg-craft"> <?php endif;  ?>
+        <section class="bg-craft highlight-overlay">
 
+            <div class="text-center p-2 pt-5 pb-5 col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                <h2>NEWSLETTER SIGN UP</h2>
+                <p>Be the first to hear about upcoming news, events and offers.</p>
+                <?php get_template_part( 'template-parts/mail-chimp', get_post_type() ); ?>
+
+            </div>
+
+        </section>
 
         <section class="footer container-fluid">
 
@@ -123,9 +123,12 @@
                 </div>
                 <div class="col-12 col-xs-6 col-md-8 ">
                     <div class="row" style="height: 100%;">
-                        <div class="col-12 col-lg-4 text-center v-center pb-2"><a href="">Privacy Policy</a></div>
-                        <div class="col-12 col-lg-4 text-center v-center pb-2"><a href="">Cookie Policy</a></div>
-                        <div class="col-12 col-lg-4 text-center v-center pb-2"><a href="">Work with us</a></div>
+                        <div class="col-12 col-lg-4 text-center v-center pb-2"><a
+                                href="<?php echo get_home_url(); ?>/privacy-policy/">Privacy Policy</a></div>
+                        <div class="col-12 col-lg-4 text-center v-center pb-2"><a
+                                href="<?php echo get_home_url(); ?>/cookie-policy/">Cookie Policy</a></div>
+                        <div class="col-12 col-lg-4 text-center v-center pb-2"><a
+                                href="<?php echo get_home_url(); ?>/work-with-us/">Work with us</a></div>
                     </div>
                 </div>
                 <div class="col-12 col-xs-3 col-md-2 text-center v-center pb-2">
@@ -144,6 +147,7 @@
     </div><!-- #page -->
 
     <?php wp_footer(); ?>
+
 
     </body>
 

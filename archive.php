@@ -11,12 +11,17 @@ get_header();
 ?>
 
 <main id="primary" class="bg-craft highlight-overlay">
-    <div class="page-head-img"
-        style="background-image: url('http://locipubs.com/wp-content/uploads/2023/11/269105947.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+    <?php
+$whats_on_image = get_theme_mod('whats_on_page_image');
+if ($whats_on_image) {
+    // Use the image URL as a background image
+    echo '<div style="background-image: url(\'' . esc_url($whats_on_image) . '\'); background-repeat: no-repeat; background-position: center center; background-size: cover;" class="page-head-img">';
+    echo '<h1>What\'s On</h1>';
+    echo '</div>';
+}
+?>
 
-        <h1>What's On</h1>
 
-    </div>
 
 
 
@@ -29,8 +34,7 @@ $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
 
 $custom_query = new WP_Query(array(
   'post_status' => 'publish',
-  'orderby' => 'date',
-  'order' => 'ASC',
+  'orderby' => 'menu_order', 
   'cat' => 1,
   'posts_per_page' => 8,
   'paged' => $paged,

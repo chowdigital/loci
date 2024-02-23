@@ -128,6 +128,8 @@ function cloudsdale_master_scripts() {
     wp_enqueue_script( 'Bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', array(), '1.0.0', true );
 
 	wp_enqueue_script( 'cloudsdale-master-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.1', true );
+	// wp_enqueue_script( 'parallax', get_template_directory_uri() . '/js/simpleParallax.min.js', array(), CLOUDSDALE_MASTER_VERSION, true );
+
 	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array(),'1.3', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -175,11 +177,47 @@ if ( class_exists( 'WooCommerce' ) ) {
  */
 
  function custom_theme_customize_register($wp_customize) {
-    // Create a section for opening times
+    
+	  // Section for Custom Images
+	  $wp_customize->add_section('custom_images_section', array(
+        'title' => 'Custom Page Images',
+        'priority' => 33,
+    ));
+
+    // Setting for Food & Drink Page Image
+    $wp_customize->add_setting('food_drink_page_image', array(
+        'default' => '',
+        'transport' => 'refresh',
+    ));
+
+    // Control for Food & Drink Page Image
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'food_drink_page_image', array(
+        'label' => 'Food & Drink Page Image',
+        'section' => 'custom_images_section',
+        'settings' => 'food_drink_page_image',
+    )));
+
+    // Setting for What's On Page Image
+    $wp_customize->add_setting('whats_on_page_image', array(
+        'default' => '',
+        'transport' => 'refresh',
+    ));
+
+    // Control for What's On Page Image
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'whats_on_page_image', array(
+        'label' => 'What\'s On Page Image',
+        'section' => 'custom_images_section',
+        'settings' => 'whats_on_page_image',
+    )));
+	
+
+		
+	// Create a section for opening times
     $wp_customize->add_section('opening_times', array(
         'title' => 'Opening Times',
         'priority' => 30,
     ));
+
 
     $wp_customize->add_section('opening_times_kitchen', array(
         'title' => 'Opening Times Kitchen',
@@ -340,3 +378,29 @@ function reg_cat() {
 	
 }
 add_action('init', 'reg_cat');
+
+/* Allow editor to edit custimisations */
+
+function customize_editor_role_and_menu() {
+    // Grant 'edit_theme_options' capability to Editor role.
+    $role = get_role('editor');
+    $role->add_cap('edit_theme_options');
+
+    // Remove unnecessary items from the Appearance menu for editors.
+    function remove_appearance_options_for_editors() {
+        // Check if the current user is an Editor.
+        if (!current_user_can('administrator') && current_user_can('editor')) {
+            // Remove menu items from the Appearance section.
+            remove_submenu_page('themes.php', 'themes.php'); // Themes
+            remove_submenu_page('themes.php', 'widgets.php'); // Widgets
+            remove_submenu_page('themes.php', 'nav-menus.php'); // Menus
+            remove_submenu_page('themes.php', 'theme-editor.php'); // Theme Editor
+        }
+    }
+
+    add_action('admin_menu', 'remove_appearance_options_for_editors', 101); // Execute after default items are added
+}
+
+add_action('init', 'customize_editor_role_and_menu');
+
+/* END - Allow editor to edit custimisations */

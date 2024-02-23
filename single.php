@@ -25,7 +25,7 @@ get_header();
         <div class="col-12 wide-block">
             <div class="wide-block-inner">
                 <?php
-						the_title( '<h2 class="entry-title">', '</h2>');
+						the_title( '<h1 class="entry-title pb-5">', '</h1>');
 						the_content(
 							sprintf(
 								wp_kses(
@@ -43,6 +43,9 @@ get_header();
 
 	
 		?>
+
+
+
             </div>
 
         </div>

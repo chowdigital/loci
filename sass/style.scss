@@ -38,6 +38,7 @@ Author URI: https://cloudsdale.co.uk/
 //  9. Default Page
 //  10. Loci Pubs page
 //  11. Menu page
+//  12. Animations
 
 // https://my.corebook.io/OJUcHwxiAK3lzsU5Bc5DvKiXiHVz7xX0/loci-1/introduction
 
@@ -167,7 +168,6 @@ body {
 #page {
   max-width: 2000px;
   margin: auto;
-  box-shadow: 5px 10px 8px #888888;
 }
 // Settings for navbar in edit mode
 
@@ -278,7 +278,6 @@ nav {
   letter-spacing: 0.1em;
   text-transform: lowercase;
   padding: 0px;
-  border-bottom: 2px solid $craft;
   height: 35px;
   margin-left: 10px;
   transition-duration: 0.3s;
@@ -287,14 +286,12 @@ nav {
 .btn-nav:hover {
   color: $yellow;
   transition-duration: 0.3s;
-  border-bottom: 2px solid $yellow;
 }
 .nav-link:focus,
 .nav-link:hover,
 .btn-nav:focus,
 .btn-nav:hover {
   color: $yellow;
-  border-bottom: 2px solid $yellow;
 }
 .v-center {
   display: flex;
@@ -305,7 +302,9 @@ nav {
   color: $yellow;
   transition-duration: 0.3s;
 }
-.text-link {
+.text-link,
+.btn-nav,
+.main-nav-link {
   position: relative;
   display: inline-block; /* Ensures the container fits the content's width */
   text-decoration: none; /* Removes the default underline */
@@ -313,11 +312,13 @@ nav {
   padding-left: 0;
 }
 
-.text-link::after {
+.text-link::after,
+.btn-nav::after,
+.main-nav-link::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -5px;
   width: 100%;
   height: 2px;
   background: linear-gradient(to right, $yellow 50%, $craft 50%);
@@ -326,10 +327,18 @@ nav {
   transition: all 0.3s ease-out;
 }
 
-.text-link:hover::after {
+.text-link:hover::after,
+.btn-nav:hover:after,
+.main-nav-link:hover:after {
   background-position: left bottom;
 }
 
+//shadow for large screens
+main,
+footer,
+.signup-section {
+  box-shadow: 0px 0px 40px #333;
+}
 // ===========================================================================
 //  2. Typography
 // ===========================================================================
@@ -524,15 +533,18 @@ li {
   height: 30px;
   display: inline-block;
   transition-duration: 0.6s;
+  margin-top: 13px;
 }
 
-@media (min-width: 992px) {
+@media (min-width: $md) {
   .menu-toggle {
     width: 110px;
     width: 171.3px;
   }
+  #menuIconClose {
+    margin-top: 38px;
+  }
 }
-
 // offcanvas start
 .offcanvas-start {
   width: 100%;
@@ -644,7 +656,7 @@ li {
 }
 .nav-link {
   padding: 0px;
-  border-bottom: 2px solid $craft;
+
   height: 35px;
   font-size: 25px;
   margin-left: 10px;
@@ -657,7 +669,7 @@ li {
 @media (min-width: $md) {
   .nav-link {
     padding: 0px;
-    border-bottom: 2px solid $craft;
+
     height: 35px;
   }
   .nav-btn {
@@ -683,6 +695,10 @@ li {
 
 .footer {
   color: $blue-dark;
+  a {
+    color: $blue-dark;
+  }
+
   ul {
     list-style-type: none;
     margin: 0;
@@ -984,16 +1000,20 @@ li {
   h1 {
     color: $craft;
     position: absolute;
-    top: 50%;
+    top: 43%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Horizontal offset, vertical offset, blur radius, color */
+    text-shadow: 2px 2px 12px #000;
+    font-size: 40px;
   }
 }
 @media (min-width: $md) {
   .page-head-img {
     padding-bottom: 50%;
     margin-top: 100px;
+    h1 {
+      font-size: 45px;
+    }
   }
 }
 
@@ -1001,6 +1021,9 @@ li {
   .page-head-img {
     padding-bottom: 40%;
     margin-top: 100px;
+    h1 {
+      font-size: 45px;
+    }
   }
 }
 
@@ -1108,66 +1131,37 @@ li {
 // ===========================================================================
 //  9. Wordpress Styles
 // ===========================================================================
-.wp-block-gallery {
-  .wp-block-image:after {
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: #f4abb9;
-    mix-blend-mode: multiply;
-  }
-  .wp-block-image {
-    background: #dfc797;
-    background-repeat: repeat;
-    background-image: none;
-    background-image: url(../loci/assets/texture/craft.png);
-    background-repeat: repeat;
-    padding: 5px;
-    img {
-      position: relative;
-      z-index: 2;
-    }
-  }
-}
-.wp-block-button {
-  padding-bottom: 10px;
-  width: 100%;
-}
 .wp-block-button__link {
-  border: 5px solid;
-  line-height: 10px;
-  border-image-outset: 0;
-  border-image-slice: 100%;
-  border-image-source: none;
-  border-image-width: 100px;
-  border-image-repeat: repeat;
-  border-radius: 0px;
-  transition: color 0.4s;
-  background-repeat: repeat;
-  width: 100%;
-  border-image-outset: 3px;
-  border: 5px solid $primary;
-  background-color: $primary;
-  border-color: $highlight;
-  border-image: url(../loci/assets/texture/pink-xs.png) 5;
-  background-image: url(../loci/assets/texture/blue-xs.png);
-  border-color: $highlight;
-  background-color: $primary;
-  color: $craft;
-  &:visited,
-  &:hover {
-    color: $craft;
-  }
+  font-family: "Monthoers", sans-serif;
+  color: $craft; /* Using CSS variable for color */
+  transition-duration: 0.3s;
+  font-size: 30px;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  background-color: transparent;
+  position: relative;
+  display: inline-block; /* Ensures the container fits the content's width */
+  padding-right: 0;
+  padding-left: 0;
 }
-@media (min-width: $lg) {
-  .wp-block-button {
-    padding-bottom: 10px;
-    width: 50%;
-  }
+
+.wp-block-button__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, $yellow 50%, $craft 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.3s ease-out;
+}
+
+.wp-block-button__link:hover::after {
+  background-position: left bottom;
 }
 
 //menu
@@ -1248,6 +1242,7 @@ li {
   outline: none;
   width: 100%;
   text-align: left;
+  height: auto;
 }
 
 .nav-tabs .nav-item.show .nav-link,
@@ -1267,16 +1262,25 @@ li {
 }
 .menu-content-block {
   display: flex;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 .block-right {
-  margin: 7px 0px 7px 7px;
+  margin: 7px 0px 7px 0px;
 }
 .block-left {
-  margin: 7px 7px 7px 0px;
+  margin: 7px 0px 7px 0px;
 }
 @media (min-width: $md) {
+  .block-right {
+    margin: 7px 0px 7px 7px;
+  }
+  .block-left {
+    margin: 7px 7px 7px 0px;
+  }
+  .menu-content-block {
+    display: flex;
+    flex-wrap: nowrap;
+  }
   .sticky {
     position: -webkit-sticky;
     position: sticky;
@@ -1286,11 +1290,14 @@ li {
   }
 }
 .nav-tabs {
+  .nav-link {
+  }
   li {
     padding-bottom: 20px;
   }
   h2 {
     font-size: 25px;
+    padding-bottom: 10px;
   }
 }
 .nav-link {
@@ -1299,4 +1306,38 @@ li {
 
 .nav-link:hover {
   color: $yellow;
+}
+
+// ===========================================================================
+//  12. Annimations
+// ===========================================================================
+.menu-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease-out, transform 0.5s ease-out;
+
+  // Assuming you know the maximum number of items, or you set a reasonable limit
+  @for $i from 1 through 10 {
+    // Adjust 10 to the actual or maximum expected number of items
+    &:nth-child(#{$i}) {
+      // Each child will delay 0.5s more than the previous
+      transition-delay: 0.1s * $i;
+    }
+  }
+}
+
+.inview2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.image-block {
+  opacity: 0; /* Start invisible */
+  transform: translateY(20px); /* Start 20px below its final position */
+  transition: opacity 1s ease-out, transform 1s ease-out; /* Transition for opacity and movement */
+}
+
+.image-block.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Move to its final position */
 }

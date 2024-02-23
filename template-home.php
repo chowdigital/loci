@@ -6,9 +6,12 @@
     style="height: 100vh; background-image:  url(<?php the_post_thumbnail_url(); ?>); background-repeat: no-repeat; background-position: center; background-size: cover;">
     <div class="col-12 text-center clifton-crest row">
 
-        <div class="col-12 col-md-10 col-lg-6 ">
 
+        <div class="col-12 text-center clifton-crest">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/william/TheWilliam_SwingSign_2a.png"
+                alt="The William Logo" style>
         </div>
+
 
     </div>
 
@@ -50,17 +53,11 @@
                     <h2><?php the_field('hero_2_title'); ?></h2>
                     <p><?php the_field('hero_2_body'); ?></p>
                     <div class="text-center pb-3">
-                        <!-- <a class="text-link" href="<?php the_field('hero_2_button_link'); ?>">
-                            <?php the_field('hero_2_btn_text'); ?></a> -->
-                        <a target="blank" class="text-link"
-                            href="http://locipubs.com/wp-content/uploads/2023/12/The-William_DinnerMenu_Sunday-3.12.23.pdf">
-                            Sample Menu</a>
+                        <a class="text-link" href="<?php the_field('hero_2_button_link'); ?>">
+                            <?php the_field('hero_2_btn_text'); ?></a>
+
                     </div>
-                    <div class="text-center pb-3">
-                        <a target="blank" class="text-link"
-                            href="http://locipubs.com/wp-content/uploads/2023/12/The-William_DinnerMenu_-27.11.23.pdf">
-                            Sample Sunday Menu</a>
-                    </div>
+
 
                 </div>
             </div>
@@ -91,7 +88,7 @@
             style="background-image: url('http://staging2.locipubs.com/wp-content/uploads/2024/02/JSP.LOC_.05.12.23-49-scaled-1.png'); background-repeat: no-repeat; background-position: center; background-size: cover;">
             <div class="history-block-inner" style="filter: none;">
                 <h2>History</h2>
-                <p><?php the_field('hero_3_body'); ?></p>
+                <p><?php the_field('history_body'); ?></p>
             </div>
 
         </div>

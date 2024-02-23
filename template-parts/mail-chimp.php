@@ -68,6 +68,12 @@
         border-color: none;
     }
 
+    #mc-embedded-subscribe:hover {
+        color: #d49229;
+        transition: all .3s ease-out;
+
+    }
+
     /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
      We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
     </style>
@@ -79,7 +85,7 @@
 
             <div class="form-box">
                 <div id="mc_embed_signup_scroll">
-                    <div class="mc-field-group v-center">
+                    <div class="mc-field-group v-center bg-craft">
 
                         <input type="email" name="EMAIL" class="required email v-center" id="mce-EMAIL" required=""
                             value="" placeholder="Your Email">
@@ -98,7 +104,7 @@
 
                 </div>
                 <button value="Subscribe" type="submit" name="subscribe" id="mc-embedded-subscribe" type="button"
-                    class="btn-navy v-center">
+                    class="btn-navy v-center bg-craft navy-overlay">
                     <h3>join us</h3>
                 </button>
             </div>

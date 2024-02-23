@@ -133,3 +133,60 @@ document.addEventListener("DOMContentLoaded", () =>
     fadeOut("#loading", 500); // 500 milliseconds = 0.5 seconds
   })
 );
+/* Paralax images */
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Create a new Intersection Observer instance
+  var observer = new IntersectionObserver(
+    function (entries, observer) {
+      entries.forEach(function (entry) {
+        // Check if the element is intersecting
+        if (entry.isIntersecting) {
+          // Add the 'visible' class to make the element fade in
+          entry.target.classList.add("visible");
+          // Stop observing the element if you want the animation to occur only once
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  ); // Customize this value based on when you want the animation to start
+
+  // Observe all elements with the .image-block class
+  document.querySelectorAll(".image-block").forEach(function (block) {
+    observer.observe(block);
+  });
+});
+
+/* Paralax end */
+
+/* appear food & drink menus */
+const items = document.querySelectorAll(".menu-item");
+
+function active(entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("inview2");
+    } else {
+      entry.target.classList.remove("inview2");
+    }
+  });
+}
+
+const io2 = new IntersectionObserver(active);
+
+items.forEach(function (item) {
+  io2.observe(item);
+});
+
+function resetMenuAnimation() {
+  const items = document.querySelectorAll(".menu-item");
+  items.forEach(function (item) {
+    item.classList.remove("inview2");
+  });
+}
+document.querySelector("#menuToggle").addEventListener("click", function () {
+  // You might need additional logic here to determine if the menu is being opened or closed
+  resetMenuAnimation();
+});
+/* appear food & drink menus end */

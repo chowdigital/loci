@@ -32,7 +32,7 @@
     <?php else : ?>
     <div id="loading" class="bg-craft navy-overlay">
         <div class="col-12 text-center clifton-crest">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/logos/TheWilliam_SwingSign_2a.png"
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/william/TheWilliam_SwingSign_2a.png"
                 alt="The William Logo" style>
         </div>
     </div>
@@ -66,8 +66,8 @@
                                     alt="Cifton Logo" style>
                             </a>
                             <div id="bookBtn" class="nav-btn">
-                                <a target="blank" href="https://beds24.com/booking2.php?propid=54979" class="nav-link"
-                                    role=" button"><span class="d-none d-lg-inline">
+                                <a target="blank" href="https://beds24.com/booking2.php?propid=54979"
+                                    class="nav-link main-nav-link" role=" button"><span class="d-none d-lg-inline">
                                         Book </span>Rooms</a>
 
                                 <!--  <a target="blank"
@@ -143,4 +143,3 @@
                 </div>
             </div>
         </div>
-        <!-- Resy Modal End -->
