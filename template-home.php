@@ -85,7 +85,7 @@
     <!-- History -->
     <section class="row">
         <div class="col-12 history-block"
-            style="background-image: url('http://staging2.locipubs.com/wp-content/uploads/2024/02/JSP.LOC_.05.12.23-49-scaled-1.png'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+            style="background-image: url('http://locipubs.com/wp-content/uploads/2024/02/JSP.LOC_.05.12.23-49-scaled-1.png'); background-repeat: no-repeat; background-position: center; background-size: cover;">
             <div class="history-block-inner" style="filter: none;">
                 <h2>History</h2>
                 <p><?php the_field('history_body'); ?></p>

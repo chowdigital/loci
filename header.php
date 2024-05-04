@@ -45,11 +45,7 @@
 
 
 
-        <header id="masthead" class="site-header">
-
-
-
-            <?php if ( is_page_template( 'template-loci.php' ) ) : ?>
+        <header id="masthead" class="site-header" <?php if ( is_page_template( 'template-loci.php' ) ) : ?>>
             <nav id="site-navigation" class="d-none">
                 <?php else : ?>
                 <nav id="site-navigation" class="main-navigation fixed-top">
@@ -67,19 +63,34 @@
                             </a>
                             <div id="bookBtn" class="nav-btn">
                                 <a target="blank" href="https://beds24.com/booking2.php?propid=54979"
-                                    class="nav-link main-nav-link" role=" button"><span class="d-none d-lg-inline">
+                                    class="nav-link main-nav-link" role="button"><span class="d-none d-lg-inline">
                                         Book </span>Rooms</a>
 
-                                <!--  <a target="blank"
-                                    href="https://widgets.resy.com/?ref=https%3A%2F%2Fos.resy.com%2Fportal%2Fldn%2Fthe-william%2Fvenue%2Fwidget&src=os.resy.com-widget&innerHeight=1355&innerWidth=1383&apiKey=f4HOEPaKd73NglfQ0ZuYgJbwZLA3XmwW&venueId=74840#/venues/74840?date=2023-11-28&seats=2"
-                                    class="nav-link" role=" button"><span class="d-none d-lg-inline">
+                                <a href="https://resy.com/cities/ldn/the-william" class="nav-link main-nav-link"
+                                    role="button" id="resyButton-HmHwFasisffeS3bJcwU_y"><span
+                                        class="d-none d-lg-inline">
                                         Book </span>Food</a>
-                -->
-                                <button type="button" class="btn-nav" data-bs-toggle="modal"
-                                    data-bs-target="#resyWidgetModal">
-                                    <span class="d-none d-lg-inline">
-                                        Book </span>Food
-                                </button>
+
+
+                                <script src="https://widgets.resy.com/embed.js"></script>
+                                <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    var i;
+                                    var links = document.querySelectorAll(
+                                        'a[href="https://resy.com/cities/ldn/the-william"]');
+                                    for (i = 0; i <
+                                        links.length; i++) {
+                                        links[i].addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            resyWidget.openModal({
+                                                "venueId": 74840,
+                                                "apiKey": "f4HOEPaKd73NglfQ0ZuYgJbwZLA3XmwW",
+                                                'replace': 'true'
+                                            });
+                                        }, false);
+                                    }
+                                }, false);
+                                </script>
 
                             </div>
 
@@ -122,24 +133,3 @@
                     </nav><!-- #site-navigation -->
 
         </header><!-- #masthead -->
-
-        <!-- Resy Modal -->
-        <div class="modal fade" id="resyWidgetModal" tabindex="-1" aria-labelledby="resyWidgetModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="resyWidgetModalLabel">Resy Reservation</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <iframe
-                            src="https://widgets.resy.com/?ref=https%3A%2F%2Fos.resy.com%2Fportal%2Fldn%2Fthe-william%2Fvenue%2Fwidget&src=os.resy.com-widget&innerHeight=1355&innerWidth=1383&apiKey=f4HOEPaKd73NglfQ0ZuYgJbwZLA3XmwW&venueId=74840#/venues/74840?seats=2&date=2024-02-04"
-                            width="100%" height="600" style="border: none;"></iframe>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
