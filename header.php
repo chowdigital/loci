@@ -57,7 +57,7 @@
                                 <div id="menuIcon"></div>
                             </a>
                             <a id="navbrand" class="navbar-brand navbrand d-none d-md-block"
-                                href="<?php echo esc_url( home_url( '/william' ) ); ?>">
+                                href="<?php echo esc_url( home_url( '' ) ); ?>">
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/logos/TheWilliam_horizontalLogo_1b.png"
                                     alt="Cifton Logo" style>
                             </a>

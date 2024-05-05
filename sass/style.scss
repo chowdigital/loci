@@ -1,5 +1,5 @@
 /*!
-Theme Name: Cloudsdale_Theme
+Theme Name: Loci Pubs Master
 Theme URI: https://cloudsdale.co.uk/fullfat
 Author: Sean Cloudsdale
 Author URI: https://cloudsdale.co.uk/
@@ -577,6 +577,7 @@ li {
   color: $craft;
   width: 100%;
 }
+/*
 .navbar-nav {
   position: relative;
   display: flex;
@@ -595,25 +596,25 @@ li {
   }
   a {
     position: relative;
-    display: inline-block; /* Ensures the container fits the content's width */
-    text-decoration: none; /* Optional: removes the default underline */
+    display: inline-block; 
+    text-decoration: none; 
   }
 
   a::after {
     content: "";
     content: "";
     position: absolute;
-    width: 0; /* Start with no width */
-    height: 3px; /* Thickness of the underline */
-    background: $blue-dark; /* Color of the underline */
-    bottom: 0; /* Position at the bottom of the element */
-    left: 50%; /* Start from the middle */
-    transition: width 0.3s ease, left 0.3s ease; /* Smooth transition for the underline */
+    width: 0; 
+    height: 3px; 
+    background: $blue-dark; 
+    bottom: 0; 
+    left: 50%; 
+    transition: width 0.3s ease, left 0.3s ease; /
   }
 
   a:hover::after {
-    width: 100%; /* Full width on hover */
-    left: 0; /* Align to the left edge */
+    width: 100%; 
+    left: 0; 
   }
 }
 
@@ -626,7 +627,7 @@ li {
       }
     }
   }
-}
+} */
 
 .main-navigation ul {
   display: flex;
@@ -777,6 +778,11 @@ li {
     margin-right: auto;
     margin-left: auto;
   }
+}
+.news-signup {
+  color: $craft;
+  color: #dfc797;
+  position: relative;
 }
 // ===========================================================================
 //  5. Containers
@@ -1232,11 +1238,11 @@ li {
 }
 
 .nav-tabs {
-  border-bottom: none;
+  border-bottom: none !important;
   display: flex;
   flex-direction: column;
 }
-.nav-tabs .nav-link {
+.nav-tabs li .nav-link {
   background-color: transparent;
   border: none;
   outline: none;
@@ -1245,16 +1251,16 @@ li {
   height: auto;
 }
 
-.nav-tabs .nav-item.show .nav-link,
-.nav-tabs .nav-link:focus,
-.nav-tabs .nav-link:hover,
-.nav-tabs .nav-link:focus-visible {
+.nav-tabs li .nav-item.show .nav-link,
+.nav-tabs li .nav-link:focus,
+.nav-tabs li .nav-link:hover,
+.nav-tabs li .nav-link:focus-visible {
   color: $yellow;
   background-color: transparent;
   border: none;
   outline: none;
 }
-.nav-tabs .nav-link.active {
+.nav-tabs li .nav-link.active {
   color: $highlight;
   background-color: transparent;
   border: none;

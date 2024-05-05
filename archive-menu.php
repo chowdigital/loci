@@ -10,40 +10,101 @@
 get_header();
 ?>
 
-<main id="page-main" class="bg-dot">
-
-<?php if ( have_posts() ) : ?>
-
-<header class="page-header">
-    <?php
-    the_archive_title( '<h1 class="page-title">', '</h1>' );
-    the_archive_description( '<div class="archive-description">', '</div>' );
-    ?>
-</header><!-- .page-header -->
-
-<?php
-/* Start the Loop */
-while ( have_posts() ) :
-    the_post();
-
-    /*
-     * Include the Post-Type-specific template for the content.
-     * If you want to override this in a child theme, then include a file
-     * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-     */
-    get_template_part( 'template-parts/content', get_post_type() );
-
-endwhile;
-
-the_posts_navigation();
-
-else :
-
-get_template_part( 'template-parts/content', 'none' );
-
-endif;
+<main id="primary" class="bg-craft highlight-overlay">
+    <main id="primary" class="bg-craft highlight-overlay">
+        <?php
+$food_drink_image = get_theme_mod('food_drink_page_image');
+if ($food_drink_image) {
+    // Use the image URL as a background image
+    echo '<div style="background-image: url(\'' . esc_url($food_drink_image) . '\'); background-repeat: no-repeat; background-position: center center; background-size: cover;" class="page-head-img">';
+    echo '<h1>Food & Drink</h1>';
+    echo '</div>';
+}
 ?>
-	</main><!-- #main -->
 
-<?php
+
+
+
+        <section id="menuBlocks" class="image-content-blocks">
+
+            <div class="menu-content-block">
+
+                <div class="content-block bg-craft navy-overlay block-left">
+                    <div class="inner-content-block sticky ">
+                        <?php 
+// Setup the query for the 'menus' custom post type
+$custom_query = new WP_Query(array(
+  'post_type' => 'menus', // Corrected to match the registered post type name
+  'post_status' => 'publish',
+  'orderby' => 'menu_order', // C
+    'order' => 'ASC',
+  'posts_per_page' => -1, // Load all posts
+));
+
+// Check if the query returns any posts
+if ($custom_query->have_posts()) : 
+    // Initialize tab index
+    $tabIndex = 0;
+    ?>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <?php
+    // Loop through the posts to create tabs
+    while ($custom_query->have_posts()) : $custom_query->the_post();
+        // Use the post ID to create a unique tab ID
+        $tabId = 'simple-tab-' . get_the_ID();
+        ?>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link <?php echo ($tabIndex === 0) ? 'active' : ''; ?>"
+                                    id="<?php echo $tabId; ?>" data-bs-toggle="tab" href="#<?php echo $tabId; ?>-panel"
+                                    role="tab" aria-controls="<?php echo $tabId; ?>-panel"
+                                    aria-selected="<?php echo ($tabIndex === 0) ? 'true' : 'false'; ?>">
+                                    <h2><?php the_title(); ?></h2>
+                                </a>
+                            </li>
+                            <?php 
+        $tabIndex++;
+    endwhile;
+    ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content-block bg-craft block-right">
+
+
+                    <div class="inner-content-block tab-content menu-tab">
+                        <?php
+    // Reset post data and tab index for creating tab panels
+    $custom_query->rewind_posts();
+    $tabIndex = 0;
+
+    // Loop through the posts again to create tab panels
+    while ($custom_query->have_posts()) : $custom_query->the_post();
+        $tabId = 'simple-tab-' . get_the_ID();
+        ?>
+                        <div class="tab-pane fade <?php echo ($tabIndex === 0) ? 'show active' : ''; ?>"
+                            id="<?php echo $tabId; ?>-panel" role="tabpanel" aria-labelledby="<?php echo $tabId; ?>">
+                            <h1><?php the_title(); ?></h1>
+                            <div><?php the_content(); ?></div>
+                        </div>
+                        <?php
+        $tabIndex++;
+    endwhile;
+    ?>
+                    </div>
+                    <?php
+endif; 
+?>
+
+
+                </div>
+            </div>
+
+
+
+
+        </section>
+
+    </main><!-- #main -->
+
+    <?php
 get_footer();

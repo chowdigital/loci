@@ -131,6 +131,7 @@ function cloudsdale_master_scripts() {
 	// wp_enqueue_script( 'parallax', get_template_directory_uri() . '/js/simpleParallax.min.js', array(), CLOUDSDALE_MASTER_VERSION, true );
 
 	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array(),'1.3', true );
+    wp_enqueue_script( 'custom-script', get_template_directory_uri() . '/js/metabox.js', array( 'jquery' ), '1.0', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -404,3 +405,8 @@ function customize_editor_role_and_menu() {
 add_action('init', 'customize_editor_role_and_menu');
 
 /* END - Allow editor to edit custimisations */
+
+/*
+====== Metaboxes 
+*/
+require_once get_template_directory() . '/functions/metaboxes.php';
