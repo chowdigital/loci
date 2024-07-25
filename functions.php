@@ -119,25 +119,26 @@ add_action( 'after_setup_theme', 'cloudsdale_master_content_width', 0 );
 /**
  * Enqueue scripts and styles.
  */
-function cloudsdale_master_scripts() {
-	wp_enqueue_style( 'Bootstrap','https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css', array() );
+function cloudsdale_master_enqueue_styles() {
+    // Enqueue Bootstrap CSS
+    wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css', array(), null);
 
-	//wp_enqueue_style( 'cloudsdale-master-style', get_stylesheet_uri(), array(), $ver = 1.3 );
-	wp_enqueue_style('clousedale-minified-style', get_theme_file_uri('style.min.css') , array(), $ver = 1.9 );
-	wp_style_add_data( 'cloudsdale-master-style', 'rtl', 'replace' );
-    wp_enqueue_script( 'Bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', array(), '1.0.0', true );
+    // Enqueue custom minified style after Bootstrap
+    wp_enqueue_style('clousedale-minified-style', get_theme_file_uri('style.min.css'), array('bootstrap'), '2.0');
 
-	wp_enqueue_script( 'cloudsdale-master-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.1', true );
-	// wp_enqueue_script( 'parallax', get_template_directory_uri() . '/js/simpleParallax.min.js', array(), CLOUDSDALE_MASTER_VERSION, true );
+    // Enqueue Bootstrap JS
+    wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', array(), '5.0.2', true);
 
-	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array(),'1.3', true );
-    wp_enqueue_script( 'custom-script', get_template_directory_uri() . '/js/metabox.js', array( 'jquery' ), '1.0', true );
+    // Enqueue other scripts
+    wp_enqueue_script('cloudsdale-master-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.1', true);
+    wp_enqueue_script('custom', get_template_directory_uri() . '/js/custom.js', array(), '1.5', true);
+    wp_enqueue_script('custom-script', get_template_directory_uri() . '/js/metabox.js', array('jquery'), '1.0', true);
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
 }
-add_action( 'wp_enqueue_scripts', 'cloudsdale_master_scripts' );
+add_action('wp_enqueue_scripts', 'cloudsdale_master_enqueue_styles');
 
 /**
  * Implement the Custom Header feature.
@@ -211,7 +212,18 @@ if ( class_exists( 'WooCommerce' ) ) {
         'settings' => 'whats_on_page_image',
     )));
 	
+   // Setting for History Page Image
+$wp_customize->add_setting('history_page_image', array(
+    'default' => '',
+    'transport' => 'refresh',
+));
 
+// Control for History Page Image
+$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'history_page_image', array(
+    'label' => 'History Page Image',
+    'section' => 'custom_images_section',
+    'settings' => 'history_page_image',
+)));
 		
 	// Create a section for opening times
     $wp_customize->add_section('opening_times', array(
@@ -367,46 +379,112 @@ function add_noindex_to_menus_post_type() {
 }
 
 add_action('wp_head', 'add_noindex_to_menus_post_type');
+
+
+
 /* MENUS END*/
 
-
-/**
- * Add Catagoies to custom menu section
- */
-
-function reg_cat() {
-	register_taxonomy_for_object_type('category','menus');
-	
-}
-add_action('init', 'reg_cat');
-
-/* Allow editor to edit custimisations */
-
+/* Allow editor to edit customizations */
 function customize_editor_role_and_menu() {
     // Grant 'edit_theme_options' capability to Editor role.
     $role = get_role('editor');
-    $role->add_cap('edit_theme_options');
-
-    // Remove unnecessary items from the Appearance menu for editors.
-    function remove_appearance_options_for_editors() {
-        // Check if the current user is an Editor.
-        if (!current_user_can('administrator') && current_user_can('editor')) {
-            // Remove menu items from the Appearance section.
-            remove_submenu_page('themes.php', 'themes.php'); // Themes
-            remove_submenu_page('themes.php', 'widgets.php'); // Widgets
-            remove_submenu_page('themes.php', 'nav-menus.php'); // Menus
-            remove_submenu_page('themes.php', 'theme-editor.php'); // Theme Editor
-        }
+    if ($role) {
+        $role->add_cap('edit_theme_options');
     }
-
-    add_action('admin_menu', 'remove_appearance_options_for_editors', 101); // Execute after default items are added
 }
 
 add_action('init', 'customize_editor_role_and_menu');
 
-/* END - Allow editor to edit custimisations */
+function adjust_appearance_menu_for_editors() {
+    // Check if the current user is an Editor and not an Administrator.
+    if (!current_user_can('administrator') && current_user_can('editor')) {
+        // Remove all submenu items from the Appearance section
+        global $submenu;
+        unset($submenu['themes.php']);
+
+        // Allow access only to Customizer
+        add_submenu_page('themes.php', 'Customize', 'Customize', 'edit_theme_options', 'customize.php');
+    }
+}
+
+// It's crucial to hook this with a priority high enough that it runs after all other menu items have been added.
+add_action('admin_menu', 'adjust_appearance_menu_for_editors', 999);
+
+/* Remove Tools and Comments from the dashboard */
+function remove_menus_for_editors() {
+    // Check if the current user is an Editor and not an Administrator.
+    if (!current_user_can('administrator') && current_user_can('editor')) {
+        remove_menu_page('edit-comments.php'); // Comments
+        remove_menu_page('tools.php');         // Tools
+    }
+}
+
+add_action('admin_init', 'remove_menus_for_editors');
+
+/* Remove Comments link from the WordPress Multisite admin bar */
+function remove_multisite_comments_link($wp_admin_bar) {
+    // Check if the user is an Editor and not an Administrator.
+    if (!current_user_can('administrator') && current_user_can('editor')) {
+        // Remove the Comments menu from the admin bar.
+        $wp_admin_bar->remove_node('comments');
+
+        // Loop through each blog if it's a multisite.
+        if (is_multisite()) {
+            $blogs = get_blogs_of_user(get_current_user_id());
+            foreach ($blogs as $blog) {
+                // Construct the node ID and remove it.
+                $node_id = 'blog-' . $blog->userblog_id . '-c'; // ID for the Manage Comments link
+                $wp_admin_bar->remove_node($node_id);
+            }
+        }
+    }
+}
+
+add_action('admin_bar_menu', 'remove_multisite_comments_link', 100);
+
 
 /*
 ====== Metaboxes 
 */
 require_once get_template_directory() . '/functions/metaboxes.php';
+
+/*
+====== Google Tag
+*/
+
+
+// Add Google Tag (gtag.js) to all pages
+function add_google_tag() {
+    ?>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TM4FLFPQ1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+
+function gtag() {
+    dataLayer.push(arguments);
+}
+gtag('js', new Date());
+
+gtag('config', 'G-3TM4FLFPQ1');
+</script>
+<!-- Hotjar Tracking Code for Loci -->
+<script>
+(function(h, o, t, j, a, r) {
+    h.hj = h.hj || function() {
+        (h.hj.q = h.hj.q || []).push(arguments)
+    };
+    h._hjSettings = {
+        hjid: 5023390,
+        hjsv: 6
+    };
+    a = o.getElementsByTagName('head')[0];
+    r = o.createElement('script');
+    r.async = 1;
+    r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+    a.appendChild(r);
+})(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+</script>
+<?php
+}
+add_action('wp_head', 'add_google_tag');

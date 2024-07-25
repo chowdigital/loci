@@ -3,7 +3,7 @@
 function custom_theme_add_metaboxes() {
     global $post;
 
-    // Check if the current page is using the "Home William" template
+    // Check if the current page is using the "Home " template
     $template_slug = get_page_template_slug( $post->ID );
     if ( 'template-home.php' === $template_slug ) {
         add_meta_box(
@@ -137,8 +137,11 @@ function custom_theme_render_gallery_metabox( $post ) {
     }
     ?>
 <p>
-    <?php for ($i = 1; $i <= 8; $i++) { ?>
-    <label for="gallery_image_<?php echo $i; ?>">Image <?php echo $i; ?>:</label><br>
+    <?php for ($i = 1; $i <= 8; $i++) { 
+        // Determine label based on the index
+        $label = $i <= 4 ? "Graphic " . $i : "Photo " . ($i - 4);
+    ?>
+    <label for="gallery_image_<?php echo $i; ?>"><?php echo $label; ?>:</label><br>
     <input type="text" id="gallery_image_<?php echo $i; ?>" name="gallery_image_<?php echo $i; ?>"
         value="<?php echo isset($images[$i-1]) ? esc_attr( $images[$i-1] ) : ''; ?>" style="width: 70%;" readonly>
     <button type="button" class="button button-secondary" id="upload_gallery_image_<?php echo $i; ?>">Select

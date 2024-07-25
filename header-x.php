@@ -12,73 +12,124 @@
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
-<head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
 
-	<?php wp_head(); ?>
+<head>
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+
+    <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'cloudsdale-master' ); ?></a>
-
-	
-
-	<header id="masthead" class="site-header">
-		<nav class="navbar fixed-top navbar-dark">
-		
-			<div class="container-fluid">
-			<button id="menuToggle" class="menu-toggle"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-			<div class="menu-icon"></div>
-				</button>
-				<a class="navbar-brand" href="#">Offcanvas dark navbar</a>
-			
-				<div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-					<div class="offcanvas-header">
-						<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
-						<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-					</div>
-					<div class="offcanvas-body">
-						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Link</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Dropdown
-							</a>
-							<ul class="dropdown-menu dropdown-menu-dark">
-							<li><a class="dropdown-item" href="#">Action</a></li>
-							<li><a class="dropdown-item" href="#">Another action</a></li>
-							<li>
-								<hr class="dropdown-divider">
-							</li>
-							<li><a class="dropdown-item" href="#">Something else here</a></li>
-							</ul>
-						</li>
-						</ul>
-						<form class="d-flex mt-3" role="search">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-						<button class="btn btn-success" type="submit">Search</button>
-					</form>
-				</div>
-				</div>
-			</div>
-		
-		</nav>
-	</header><!-- #masthead -->
+    <?php wp_body_open(); ?>
+    <?php if ( is_page_template( 'template-loci.php' ) ) : ?>
+    <div id="loading" class="bg-craft blue-overlay">
+        <div class="col-12 text-center clifton-crest">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/logos/loci.png" alt="Loci Logo" style>
+        </div>
+    </div>
+    <?php else : ?>
+    <div id="loading" class="bg-craft navy-overlay">
+        <div class="col-12 text-center clifton-crest">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/william/TheWilliam_SwingSign_2a.png"
+                alt="The William Logo" style>
+        </div>
+    </div>
+    <?php endif;  ?>
 
 
-	<!-- https://wpengine.co.uk/resources/add-preloader-animation-wordpress/
-	
-<div class="spinner-wrapper">
-<div class="spinner"></div>
-</div>
+    <div id="page" class="site">
+        <a class="skip-link screen-reader-text"
+            href="#primary"><?php esc_html_e( 'Skip to content', 'cloudsdale-master' ); ?></a>
 
-				-->
+
+
+        <header id="masthead" class="site-header" <?php if ( is_page_template( 'template-loci.php' ) ) : ?>>
+            <nav id="site-navigation" class="d-none">
+                <?php else : ?>
+                <nav id="site-navigation" class="main-navigation fixed-top">
+                    <?php endif;  ?>
+                    <nav id="site-navigation" class="main-navigation fixed-top">
+                        <div id="navbar" class="cm-nav bg-craft navy-overlay shadow container-fluid">
+                            <a id="menuToggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"
+                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav">
+                                <div id="menuIcon"></div>
+                            </a>
+                            <a id="navbrand" class="navbar-brand navbrand d-none d-md-block"
+                                href="<?php echo esc_url( home_url( '' ) ); ?>">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/logos/TheWilliam_horizontalLogo_1b.png"
+                                    alt="Cifton Logo" style>
+                            </a>
+                            <div id="bookBtn" class="nav-btn">
+                                <a target="blank" href="https://beds24.com/booking2.php?propid=54979"
+                                    class="nav-link main-nav-link" role="button"><span class="d-none d-lg-inline">
+                                        Book </span>Rooms</a>
+
+                                <a href="https://resy.com/cities/ldn/the-william" class="nav-link main-nav-link"
+                                    role="button" id="resyButton-HmHwFasisffeS3bJcwU_y"><span
+                                        class="d-none d-lg-inline">
+                                        Book </span>Food</a>
+
+
+                                <script src="https://widgets.resy.com/embed.js"></script>
+                                <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    var i;
+                                    var links = document.querySelectorAll(
+                                        'a[href="https://resy.com/cities/ldn/the-william"]');
+                                    for (i = 0; i <
+                                        links.length; i++) {
+                                        links[i].addEventListener('click', function(e) {
+                                            e.preventDefault();
+                                            resyWidget.openModal({
+                                                "venueId": 74840,
+                                                "apiKey": "f4HOEPaKd73NglfQ0ZuYgJbwZLA3XmwW",
+                                                'replace': 'true'
+                                            });
+                                        }, false);
+                                    }
+                                }, false);
+                                </script>
+
+                            </div>
+
+
+                        </div>
+                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav"
+                            aria-labelledby="offcanvasNavLabel" data-bs-scroll="true">
+                            <div class="close-box">
+                                <a class="menu-toggle" data-bs-dismiss="offcanvas" aria-label="Close">
+                                    <div id="menuIconClose"></div>
+                                </a>
+                            </div>
+
+                            <div class="offcanvas-body bg-craft">
+
+                                <a id="pub-logo" href="<?php echo esc_url( home_url( '/william' ) ); ?>">
+                                    <img class="d-none d-md-inline"
+                                        src="<?php echo get_template_directory_uri(); ?>/assets/william/TheWilliam_horizontalLogo_2b.png"
+                                        alt="The William Logo" style="">
+                                    <img class="d-md-none"
+                                        src="<?php echo get_template_directory_uri(); ?>/assets/william/TheWilliam_verticalLogo_2b.png"
+                                        alt="The William Logo" style=""></a>
+                                <?php
+							wp_nav_menu(
+								array(
+									'theme_location' => 'menu-1',
+									'menu_id'        => 'primary-menu',
+									'container'      => 'div',
+									'menu_class'     => 'navbar-nav',
+									
+								)
+							);
+							?>
+                                <a id="pub-crest" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img
+                                        src="<?php echo get_template_directory_uri(); ?>/assets/william/TheWilliam_Crest_2b.png"
+                                        alt="The William Logo" style="width:200px;"></a>
+                            </div>
+
+                        </div>
+                    </nav><!-- #site-navigation -->
+
+        </header><!-- #masthead -->

@@ -19,7 +19,7 @@
     <footer class="bg-craft"> <?php endif;  ?>
         <section class="bg-craft highlight-overlay">
 
-            <div class="text-center p-2 pt-5 pb-5 col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+            <div class="news-signup text-center p-2 pt-5 pb-5 col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                 <h2>NEWSLETTER SIGN UP</h2>
                 <p>Be the first to hear about upcoming news, events and offers.</p>
                 <?php get_template_part( 'template-parts/mail-chimp', get_post_type() ); ?>
@@ -116,19 +116,19 @@
 
 
 
+                <div class="col-12 col-xs-3 col-md-2 v-center pb-2 text-center pb-3">
 
-                <div class="col-12 col-xs-3 col-md-2 v-center pb-2">
-                    <a id="loci-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img
+                    <a id="loci-logo" href="<?php echo network_home_url('/'); ?>"><img
                             src="<?php echo get_template_directory_uri(); ?>/assets/logos/loci.png" alt=""></a>
                 </div>
                 <div class="col-12 col-xs-6 col-md-8 ">
                     <div class="row" style="height: 100%;">
                         <div class="col-12 col-lg-4 text-center v-center pb-2"><a
-                                href="<?php echo get_home_url(); ?>/privacy-policy/">Privacy Policy</a></div>
+                                href="<?php echo network_home_url(); ?>/privacy-policy/">Privacy Policy</a></div>
                         <div class="col-12 col-lg-4 text-center v-center pb-2"><a
-                                href="<?php echo get_home_url(); ?>/cookie-policy/">Cookie Policy</a></div>
+                                href="<?php echo network_home_url(); ?>/cookie-policy/">Cookie Policy</a></div>
                         <div class="col-12 col-lg-4 text-center v-center pb-2"><a
-                                href="<?php echo get_home_url(); ?>/work-with-us/">Work with us</a></div>
+                                href="<?php echo network_home_url(); ?>/work-with-us/">Work with us</a></div>
                     </div>
                 </div>
                 <div class="col-12 col-xs-3 col-md-2 text-center v-center pb-2">
@@ -137,7 +137,7 @@
         </section>
         <!-- Cloudsdale -->
         <div class="text-center" style="background: #000;">
-            <a href="https://cloudsdale.co.uk/"> <img class="m-2"
+            <a href="https://cloudsdale.co.uk/"> Resteraunt web design by Sean Cloudsdale <img class="m-2"
                     src="https://cloudsdale.co.uk/wp-content/themes/Cloudsdale_2.0/assets/img/cloudsdale_logo.svg"
                     alt="Cloudsdale" style="height:20px">
         </div></a>

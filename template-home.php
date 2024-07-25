@@ -76,24 +76,11 @@
     <!-- History -->
     <section class="row">
         <div class="col-12 history-block"
-            style="background-image: url('http://locipubs.com/wp-content/uploads/2024/02/JSP.LOC_.05.12.23-49-scaled-1.png'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+            style="background-image: url('<?php echo esc_url(get_theme_mod('history_page_image', '')); ?>'); background-repeat: no-repeat; background-position: center; background-size: cover;">
             <div class="history-block-inner" style="filter: none;">
                 <h2>History</h2>
                 <p><?php echo get_post_meta( $post->ID, 'history', true ); ?></p>
             </div>
-        </div>
-    </section>
-    <!-- Gallery -->
-    <section>
-        <div class="row">
-            <?php
-            for ($i = 1; $i <= 8; $i++) {
-                $image_url = get_post_meta( $post->ID, 'gallery_image_' . $i, true );
-                if (!empty($image_url)) {
-                    echo '<div class="col-6 col-md-3 square-img" style="background-image: url(\'' . $image_url . '\');"></div>';
-                }
-            }
-        ?>
         </div>
     </section>
 

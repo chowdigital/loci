@@ -17,7 +17,7 @@ $food_drink_image = get_theme_mod('food_drink_page_image');
 if ($food_drink_image) {
     // Use the image URL as a background image
     echo '<div style="background-image: url(\'' . esc_url($food_drink_image) . '\'); background-repeat: no-repeat; background-position: center center; background-size: cover;" class="page-head-img">';
-    echo '<h1>Food & Drink</h1>';
+    echo '<h1>Eat & Drink</h1>';
     echo '</div>';
 }
 ?>
@@ -46,14 +46,14 @@ if ($custom_query->have_posts()) :
     // Initialize tab index
     $tabIndex = 0;
     ?>
-                        <ul class="nav nav-tabs" role="tablist">
+                        <ul class="nav-tabs" role="tablist">
                             <?php
     // Loop through the posts to create tabs
     while ($custom_query->have_posts()) : $custom_query->the_post();
         // Use the post ID to create a unique tab ID
         $tabId = 'simple-tab-' . get_the_ID();
         ?>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item-2" role="presentation">
                                 <a class="nav-link <?php echo ($tabIndex === 0) ? 'active' : ''; ?>"
                                     id="<?php echo $tabId; ?>" data-bs-toggle="tab" href="#<?php echo $tabId; ?>-panel"
                                     role="tab" aria-controls="<?php echo $tabId; ?>-panel"

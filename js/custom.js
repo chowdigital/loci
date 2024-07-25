@@ -76,7 +76,7 @@ if ("IntersectionObserver" in window) {
 }
 
 // Appear food & drink menus
-const menuItems = document.querySelectorAll(".menu-item");
+const menuItems = document.querySelectorAll(".menu-item, .nav-item");
 
 function active(entries) {
   entries.forEach(function (entry) {
@@ -102,4 +102,70 @@ function resetMenuAnimation() {
 
 document.querySelector("#menuToggle").addEventListener("click", function () {
   resetMenuAnimation();
+});
+
+/* ------ Modal ---*/
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the buttons that open the modal
+var btns = document.querySelectorAll(".openModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementById("closeModal");
+
+// Function to open the modal
+function openModal() {
+  modal.style.display = "block";
+  setTimeout(function () {
+    modal.classList.add("show");
+    modal.classList.remove("hide");
+  }, 10); // Delay to allow display property to apply before animation starts
+}
+
+// Add event listeners to all buttons with the class "openModal"
+btns.forEach(function (btn) {
+  btn.onclick = function () {
+    openModal();
+  };
+});
+
+// Function to close the modal
+function closeModal() {
+  modal.classList.remove("show");
+  modal.classList.add("hide");
+  setTimeout(function () {
+    modal.style.display = "none";
+  }, 500); // Delay to allow fade-out animation to complete
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  closeModal();
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    closeModal();
+  }
+};
+
+// When the user clicks the submit button inside the form, close the modal
+document.querySelector(".ot-dtp-picker-button").onclick = function () {
+  closeModal();
+};
+
+// close nav on link click
+
+var navLinks = document.querySelectorAll(".nav-link");
+var offcanvasNav = document.getElementById("offcanvasNav");
+
+navLinks.forEach(function (link) {
+  link.addEventListener("click", function () {
+    var offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasNav);
+    if (offcanvasInstance) {
+      offcanvasInstance.hide();
+    }
+  });
 });
