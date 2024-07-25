@@ -903,6 +903,7 @@ li {
 .content-block {
   flex-basis: 100%;
 }
+
 .inner-content-block {
   position: relative;
   padding: 15%;
@@ -1341,6 +1342,7 @@ li {
   width: 100%;
   text-align: left;
   height: auto;
+  padding: none;
 }
 
 .nav-tabs li .nav-item.show .nav-link,
@@ -1398,12 +1400,17 @@ li {
 }
 .nav-link {
   color: $craft;
+  padding: 0.5rem 0rem;
 }
 
 .nav-link:hover {
   color: $yellow;
 }
-
+.nav-item-menu {
+}
+ul {
+  padding-left: 0;
+}
 // ===========================================================================
 //  12. Annimations
 // ===========================================================================
@@ -1638,3 +1645,6 @@ li {
 .ot-dtp-picker .picker__nav:not([disabled]):hover {
   border: 2px solid $yellow !important;
 }
+
+// test
+/* Ensure the container grows with content */

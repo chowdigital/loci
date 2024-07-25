@@ -16,7 +16,7 @@ $food_drink_image = get_theme_mod('food_drink_page_image');
 if ($food_drink_image) {
     // Use the image URL as a background image
     echo '<div style="background-image: url(\'' . esc_url($food_drink_image) . '\'); background-repeat: no-repeat; background-position: center center; background-size: cover;" class="page-head-img">';
-    echo '<h1>Eat & Drink</h1>';
+    echo '<h1>Eat & Drinks</h1>';
     echo '</div>';
 }
 ?>
