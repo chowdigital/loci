@@ -487,3 +487,13 @@ gtag('config', 'G-3TM4FLFPQ1');
 <?php
 }
 add_action('wp_head', 'add_google_tag');
+
+function my_custom_body_classes($classes) {
+    // Add your custom classes
+    $classes[] = 'bg-craft';
+
+
+    // Return the modified array of classes
+    return $classes;
+}
+add_filter('body_class', 'my_custom_body_classes');

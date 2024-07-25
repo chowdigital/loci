@@ -42,10 +42,9 @@ get_header();
                                 $tabId = 'simple-tab-' . get_the_ID();
                             ?>
                         <li class="nav-item-menu" role="presentation">
-                            <a class="nav-link <?php echo ($tabIndex === 0) ? 'active' : ''; ?>"
-                                id="<?php echo $tabId; ?>" data-bs-toggle="tab" href="#<?php echo $tabId; ?>-panel"
-                                role="tab" aria-controls="<?php echo $tabId; ?>-panel"
-                                aria-selected="<?php echo ($tabIndex === 0) ? 'true' : 'false'; ?>">
+                            <a class="nav-link" id="<?php echo $tabId; ?>" data-bs-toggle="tab"
+                                href="#<?php echo $tabId; ?>-panel" role="tab"
+                                aria-controls="<?php echo $tabId; ?>-panel">
                                 <h2><?php the_title(); ?></h2>
                             </a>
                         </li>
@@ -58,6 +57,9 @@ get_header();
             </div>
             <div class="content-block bg-craft block-right">
                 <div class="inner-content-block tab-content menu-tab">
+                    <div class="default-message">
+                        <h2>Choose a menu</h2>
+                    </div>
                     <?php
                     $custom_query->rewind_posts();
                     $tabIndex = 0;
@@ -65,8 +67,8 @@ get_header();
                     while ($custom_query->have_posts()) : $custom_query->the_post();
                         $tabId = 'simple-tab-' . get_the_ID();
                     ?>
-                    <div class="tab-pane fade <?php echo ($tabIndex === 0) ? 'show active' : ''; ?>"
-                        id="<?php echo $tabId; ?>-panel" role="tabpanel" aria-labelledby="<?php echo $tabId; ?>">
+                    <div class="tab-pane fade" id="<?php echo $tabId; ?>-panel" role="tabpanel"
+                        aria-labelledby="<?php echo $tabId; ?>">
                         <h1><?php the_title(); ?></h1>
                         <div><?php the_content(); ?></div>
                     </div>
@@ -82,36 +84,68 @@ get_header();
         </div>
     </section>
 </main>
+
 <script>
 document.addEventListener('DOMContentLoaded', (event) => {
     const tabs = document.querySelectorAll('.nav-link');
     const tabContent = document.querySelectorAll('.tab-pane');
+    const tabPaneContainer = document.querySelector('.tab-content');
+    const defaultMessage = document.querySelector('.default-message');
+
+    const calculateHeightWithPadding = (element) => {
+        return element.scrollHeight * 1.2;
+    };
+
+    const showTabContent = (tab) => {
+        const target = tab.getAttribute('href');
+        const targetContent = document.querySelector(target);
+
+        // Temporarily set the target content to display block to measure its height
+        targetContent.style.display = 'block';
+        const targetHeight = calculateHeightWithPadding(targetContent);
+        targetContent.style.display = '';
+
+        // Remove active class from all tabs
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // Hide all tab content with animation
+        tabContent.forEach(content => {
+            if (content.classList.contains('show')) {
+                content.classList.remove('show', 'fade-in');
+                content.classList.add('fade-out');
+                setTimeout(() => {
+                    content.style.display = 'none';
+                }, 500); // Match the CSS transition duration
+            }
+        });
+
+        // Hide the default message
+        defaultMessage.style.display = 'none';
+
+        // Set the height of the container to the target height
+        tabPaneContainer.style.height = `${targetHeight}px`;
+
+        // Show the target tab content with animation
+        setTimeout(() => {
+            targetContent.style.display = 'block';
+            targetContent.classList.remove('fade-out');
+            targetContent.classList.add('show', 'fade-in');
+        }, 500); // Small delay to trigger the transition after the fade-out
+    };
 
     tabs.forEach(tab => {
         tab.addEventListener('click', (event) => {
             event.preventDefault();
-            const target = tab.getAttribute('href');
-
-            // Remove active class from all tabs
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-
-            // Hide all tab content
-            tabContent.forEach(content => {
-                content.classList.remove('show', 'active');
-                content.style.display = 'none';
-            });
-
-            // Show the target tab content
-            const targetContent = document.querySelector(target);
-            targetContent.classList.add('show', 'active');
-            targetContent.style.display = 'block';
+            showTabContent(tab);
         });
     });
 
-    // Initial active tab setup
-    document.querySelector('.nav-link.active').click();
+    // Initial state: show the default message
+    tabPaneContainer.style.height = `${calculateHeightWithPadding(defaultMessage)}px`;
 });
 </script>
+
 <?php
 get_footer();
+?>

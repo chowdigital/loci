@@ -169,3 +169,22 @@ navLinks.forEach(function (link) {
     }
   });
 });
+
+// Adjust navigation classes for screen sizes
+function adjustNavigationClasses() {
+  var nav = document.getElementById("navbar");
+  if (window.innerWidth > 576) {
+    nav.className = "cm-nav bg-craft navy-overlay shadow container-fluid";
+  } else {
+    nav.className = "";
+  }
+}
+
+// Event listeners for load and resize
+if (window.addEventListener) {
+  window.addEventListener("load", adjustNavigationClasses, false);
+  window.addEventListener("resize", adjustNavigationClasses, false);
+} else if (window.attachEvent) {
+  window.attachEvent("onload", adjustNavigationClasses);
+  window.attachEvent("onresize", adjustNavigationClasses);
+}
